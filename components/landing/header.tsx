@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { GuestMobileSidebar } from "@/components/guest-mobile-sidebar";
 import Image from "next/image";
 
@@ -51,22 +50,12 @@ const Header = () => {
           <div className="flex ">
             <ul className="main-header__login-sing-up">
               <li>
-                <SignedIn>
-                  <Link
-                    href="/dashboard"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#a1aac9] hover:text-white"
-                  >
-                    Dashboard
-                  </Link>
-                </SignedIn>
-                <SignedOut>
-                  <Link
-                    href="/dashboard"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#a1aac9] hover:text-white"
-                  >
-                    Sign In / Sign Up
-                  </Link>
-                </SignedOut>
+                <Link
+                  href="/dashboard"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#a1aac9] hover:text-white"
+                >
+                  Dashboard
+                </Link>
               </li>
             </ul>
           </div>

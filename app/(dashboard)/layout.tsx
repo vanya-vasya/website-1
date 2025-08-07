@@ -1,6 +1,5 @@
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
-import { UserButton } from "@clerk/nextjs";
 import {
   getApiUsedGenerations,
   getApiAvailableGenerations,
@@ -42,7 +41,7 @@ export default async function DashboardLayout({
               />
             </div>
             <div className="rounded-full bg-indigo-500/10 border border-indigo-500/20 backdrop-filter backdrop-blur-sm">
-              <UserButton afterSignOutUrl="/" />
+              {/* Removed UserButton - no auth needed */}
             </div>
           </div>
         </div>
