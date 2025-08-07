@@ -22,25 +22,6 @@ const nextConfig = {
       },
     ],
   },
-  webpack: (config, { isServer, nextRuntime }) => {
-    // Handle Edge Runtime specific configurations
-    if (nextRuntime === 'edge') {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        // Polyfill crypto for Edge Runtime
-        crypto: false,
-      };
-      
-      // Ignore problematic modules in Edge Runtime
-      config.plugins.push(
-        new webpack.IgnorePlugin({
-          resourceRegExp: /^(@clerk\/shared\/devBrowser|punycode)$/,
-        })
-      );
-    }
-    
-    return config;
-  },
 };
 
 module.exports = nextConfig;
