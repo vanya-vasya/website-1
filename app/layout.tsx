@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -28,22 +27,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            inter.variable,
-            spaceGrotesk.variable
-          )}
-        >
-          <GoogleAnalytics gaId="G-DYY23NK5V1" />
-          <ModalProvider />
-          <ToasterProvider />
-          <NextTopLoader color="#3c3c77" showSpinner={false} />
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          inter.variable,
+          spaceGrotesk.variable
+        )}
+      >
+        <GoogleAnalytics gaId="G-DYY23NK5V1" />
+        <ModalProvider />
+        <ToasterProvider />
+        <NextTopLoader color="#3c3c77" showSpinner={false} />
+        {children}
+      </body>
+    </html>
   );
 }
