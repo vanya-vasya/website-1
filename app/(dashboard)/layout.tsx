@@ -1,6 +1,8 @@
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import {
   getApiUsedGenerations,
   getApiAvailableGenerations,
@@ -14,6 +16,14 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Check authentication
+  const { userId } = auth();
+  
+  // Redirect to sign-in if not authenticated
+  if (!userId) {
+    redirect('/sign-in');
+  }
+
   const apiUsedGenerations = await getApiUsedGenerations();
   const apiAvailableGenerations = await getApiAvailableGenerations();
 
