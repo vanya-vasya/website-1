@@ -127,10 +127,10 @@ export async function POST(req: Request) {
             to: body.transaction.customer.email,
             subject: `Receipt #${
               String(body.transaction.uid).split("-").pop() || "42f7fj3u48rh"
-            } - Nerbixa Tokens Purchase`,
+            } - zinvero Tokens Purchase`,
             text: `Hi there,
 
-We're excited to welcome you to Nerbixa — thanks so much for your recent order on zinvero.com!
+We're excited to welcome you to zinvero — thanks so much for your recent order on zinvero.com!
 
 You’ll find your transaction receipt attached to this message. Be sure to keep it in case you need it later.
 
@@ -139,7 +139,7 @@ If you run into any issues, have questions about your token usage, or need guida
 We’re honored to be part of your creative journey.
 
 With appreciation,
-The Nerbixa Team
+The zinvero Team
 zinvero.com
 support@zinvero.com`,
             attachments: [

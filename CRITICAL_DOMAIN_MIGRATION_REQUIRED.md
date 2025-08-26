@@ -1,8 +1,8 @@
 # 🚨 CRITICAL: DOMAIN MIGRATION REQUIRED
 
-## Changes Applied: "nerbixa" → "zinvero" (32 occurrences)
+## Changes Applied: "zinvero" → "zinvero" (32 occurrences)
 
-All 32 occurrences of "nerbixa" have been replaced with "zinvero" in the following files:
+All 32 occurrences of "zinvero" have been replaced with "zinvero" in the following files:
 
 ### 📁 Files Modified
 1. `app/api/payment/networx/route.ts` - Payment URLs and webhooks
@@ -17,7 +17,7 @@ All 32 occurrences of "nerbixa" have been replaced with "zinvero" in the followi
 ## 🚨 BREAKING CHANGES: IMMEDIATE COORDINATION REQUIRED
 
 ### 1. **Domain Infrastructure** 
-**Critical Impact**: All URLs now point to `zinvero.com` instead of `nerbixa.com`
+**Critical Impact**: All URLs now point to `zinvero.com` instead of `zinvero.com`
 
 **⚠️ REQUIRED ACTIONS**:
 - **Purchase/Setup zinvero.com domain**
@@ -29,8 +29,8 @@ All 32 occurrences of "nerbixa" have been replaced with "zinvero" in the followi
 ### 2. **Payment System URLs**
 **File**: `app/api/payment/networx/route.ts`
 **Changes**:
-- `NETWORX_RETURN_URL=https://nerbixa.com/payment/success` → `https://zinvero.com/payment/success`
-- `NETWORX_WEBHOOK_URL=https://nerbixa.com/api/webhooks/networx` → `https://zinvero.com/api/webhooks/networx`
+- `NETWORX_RETURN_URL=https://zinvero.com/payment/success` → `https://zinvero.com/payment/success`
+- `NETWORX_WEBHOOK_URL=https://zinvero.com/api/webhooks/networx` → `https://zinvero.com/api/webhooks/networx`
 
 **⚠️ REQUIRED ACTIONS**:
 - **Update payment provider (Networx) configuration**
@@ -41,8 +41,8 @@ All 32 occurrences of "nerbixa" have been replaced with "zinvero" in the followi
 ### 3. **Email System**
 **File**: `app/api/webhooks/payment/route.ts`
 **Changes**:
-- `support@nerbixa.com` → `support@zinvero.com`
-- Email templates referencing `nerbixa.com` → `zinvero.com`
+- `support@zinvero.com` → `support@zinvero.com`
+- Email templates referencing `zinvero.com` → `zinvero.com`
 
 **⚠️ REQUIRED ACTIONS**:
 - **Setup email infrastructure for zinvero.com**
@@ -54,7 +54,7 @@ All 32 occurrences of "nerbixa" have been replaced with "zinvero" in the followi
 ### 4. **Dashboard URLs (17+ occurrences)**
 **File**: `constants.ts`
 **All dashboard tool URLs changed from**:
-- `https://nerbixa.com/dashboard/*` → `https://zinvero.com/dashboard/*`
+- `https://zinvero.com/dashboard/*` → `https://zinvero.com/dashboard/*`
 
 **⚠️ REQUIRED ACTIONS**:
 - **Ensure all dashboard routes work on zinvero.com**
@@ -115,9 +115,9 @@ COMPANY_DOMAIN=zinvero.com
 ## ⚠️ ROLLBACK PLAN
 
 If issues occur:
-1. Keep nerbixa.com infrastructure running in parallel
+1. Keep zinvero.com infrastructure running in parallel
 2. Quick rollback: revert this commit and redeploy
-3. DNS failover back to nerbixa.com if needed
+3. DNS failover back to zinvero.com if needed
 
 ---
 
