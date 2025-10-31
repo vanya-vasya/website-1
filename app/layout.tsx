@@ -18,8 +18,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.nerbixa.com"),
-  title: "Nerbixa",
+  metadataBase: new URL("https://www.zinvero.com"),
+  title: "Zinvero",
   description: "AI-powered creative tools for everyone",
   manifest: "/site.webmanifest",
   icons: {
@@ -41,27 +41,27 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Nerbixa",
+    title: "Zinvero",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.nerbixa.com",
-    siteName: "Nerbixa",
-    title: "Nerbixa - AI-powered creative tools",
+    url: "https://www.zinvero.com",
+    siteName: "Zinvero",
+    title: "Zinvero - AI-powered creative tools",
     description: "AI-powered creative tools for everyone",
     images: [
       {
         url: "/logos/nerbixa-icon.png",
         width: 512,
         height: 512,
-        alt: "Nerbixa",
+        alt: "Zinvero",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "Nerbixa - AI-powered creative tools",
+    title: "Zinvero - AI-powered creative tools",
     description: "AI-powered creative tools for everyone",
     images: ["/logos/nerbixa-icon.png"],
   },

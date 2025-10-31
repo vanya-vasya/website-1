@@ -45,7 +45,7 @@ const TermsAndConditions = () => {
                 <div className="career-page-top__content-box-two">
 
                   <p className="career-page-top__text-1 pt-8" style={{ color: 'black' }}>
-                    Welcome to nerbixa.com! These Terms and Conditions (&quot;Terms&quot;) represent a legal agreement between you (&quot;User&quot;) and GUΑRΑΝТЕЕD GRЕΑТ SЕRVIСЕ LТD (&quot;Company&quot;). By accessing or using our website and the AI-powered content generation services we provide, you agree to comply with and be bound by these Terms.
+                    Welcome to zinvero.com! These Terms and Conditions (&quot;Terms&quot;) represent a legal agreement between you (&quot;User&quot;) and GUΑRΑΝТЕЕD GRЕΑТ SЕRVIСЕ LТD (&quot;Company&quot;). By accessing or using our website and the AI-powered content generation services we provide, you agree to comply with and be bound by these Terms.
                   </p>
                   <p className="career-page-top__text-1 pt-8" style={{ color: 'black' }}>
                     By accessing our site and using our services, you agree to comply with these Terms. If you do not agree to these Terms, please refrain from using our services.
@@ -193,7 +193,7 @@ const TermsAndConditions = () => {
                   <h4 className="career-page-top__title-3" style={{ color: 'black' }}>10. Contact Us</h4>
                   <p className="career-page-top__text-1" style={{ color: 'black' }}>
                     If you have any questions or concerns about these Terms,
-                    please contact us at support@nerbixa.com.
+                    please contact us at support@zinvero.com.
                   </p>
                 </div>
               </div>

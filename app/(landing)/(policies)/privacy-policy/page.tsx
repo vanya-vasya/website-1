@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
                 <div className="career-page-top__content-box-two">
 
                   <p className="career-page-top__text-1 pt-8" style={{ color: 'black' }}>
-                    Welcome to nerbixa.com! This Privacy Policy outlines how we collect, use, share, and protect your information when you visit our website or use our AI-powered services. Please review this policy carefully. If you do not agree with its terms, we kindly ask that you refrain from accessing or using our site.
+                    Welcome to zinvero.com! This Privacy Policy outlines how we collect, use, share, and protect your information when you visit our website or use our AI-powered services. Please review this policy carefully. If you do not agree with its terms, we kindly ask that you refrain from accessing or using our site.
                   </p>
                   <h4 className="career-page-top__title-3" style={{ color: 'black' }}>
                     Information We Collect
@@ -54,7 +54,7 @@ const PrivacyPolicy = () => {
                     <li>
                       <div className="career-page-top__points-shape"></div>
                                               <p style={{ color: 'black' }}>
-                        <strong>Personal Information:</strong> When you register on nerbixa.com, we may collect details such as your name, email address, and payment information (if you use any paid features or services).
+                        <strong>Personal Information:</strong> When you register on zinvero.com, we may collect details such as your name, email address, and payment information (if you use any paid features or services).
                       </p>
                     </li>
                     <li>
@@ -77,7 +77,7 @@ const PrivacyPolicy = () => {
                     <li>
                       <div className="career-page-top__points-shape"></div>
                                               <p style={{ color: 'black' }}>
-                        <strong>User Communication:</strong> Your contact details may be used to share announcements, product updates, newsletters, or important service notifications regarding your activity on nerbixa.com.
+                        <strong>User Communication:</strong> Your contact details may be used to share announcements, product updates, newsletters, or important service notifications regarding your activity on zinvero.com.
                       </p>
                     </li>
                     <li>
@@ -112,7 +112,7 @@ const PrivacyPolicy = () => {
                     <li>
                       <div className="career-page-top__points-shape"></div>
                                               <p style={{ color: 'black' }}>
-                        <strong>Business Transitions:</strong> Should nerbixa.com undergo a merger, acquisition, or restructuring, your information could be included among the assets transferred.
+                        <strong>Business Transitions:</strong> Should zinvero.com undergo a merger, acquisition, or restructuring, your information could be included among the assets transferred.
                       </p>
                     </li>
                   </ul>
@@ -154,7 +154,7 @@ const PrivacyPolicy = () => {
                     </li>
                   </ul>
                   <p className="career-page-top__text-1" style={{ color: 'black' }}>
-                    To exercise your rights, please contact us at support@nerbixa.com.
+                    To exercise your rights, please contact us at support@zinvero.com.
                   </p>
                   <h4 className="career-page-top__title-3" style={{ color: 'black' }}>
                     Changes to This Privacy Policy
@@ -165,7 +165,7 @@ const PrivacyPolicy = () => {
                   <h4 className="career-page-top__title-3" style={{ color: 'black' }}>Contact Us</h4>
                   <p className="career-page-top__text-1" style={{ color: 'black' }}>
                     If you have any questions or concerns about this Privacy
-                    Policy, please contact us at support@nerbixa.com.
+                    Policy, please contact us at support@zinvero.com.
                   </p>
                 </div>
               </div>

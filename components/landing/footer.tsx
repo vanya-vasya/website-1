@@ -50,7 +50,7 @@ const companyDetails = [
     icon: FileText,
   },
   {
-    name: "support@nerbixa.com",
+    name: "support@zinvero.com",
     icon: Mail,
   },
   {

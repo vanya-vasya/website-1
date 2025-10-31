@@ -45,7 +45,7 @@ const ReturnPolicy = () => {
                 <div className="career-page-top__content-box-two">
 
                   <p className="career-page-top__text-1 pt-8" style={{ color: 'black' }}>
-                    At nerbixa.com, we are committed to delivering high-quality AI generation services tailored to your needs. If for any reason you are not fully satisfied with your purchase, we provide a return option for unused generation credits. Our goal is to give you confidence in your purchases and ensure a smooth experience with our platform.
+                    At zinvero.com, we are committed to delivering high-quality AI generation services tailored to your needs. If for any reason you are not fully satisfied with your purchase, we provide a return option for unused generation credits. Our goal is to give you confidence in your purchases and ensure a smooth experience with our platform.
                   </p>
                   <p className="career-page-top__text-1 pt-4">
                     You may request a refund for any unused generations within 14 days of the purchase date. This policy applies to all generation packages offered on our website. Please review the conditions below to understand the requirements for returning unused generations.
@@ -57,7 +57,7 @@ const ReturnPolicy = () => {
                     <li>
                       <div className="career-page-top__points-shape"></div>
                                               <p style={{ color: 'black' }}>
-                        <strong>Unused Generations:</strong> Refunds are available only for generation credits that remain unused. Once credits have been applied to any of our AI services—including text creation, image generation, or other tools offered on nerbixa.com—they are considered consumed and are not eligible for return or refund.
+                        <strong>Unused Generations:</strong> Refunds are available only for generation credits that remain unused. Once credits have been applied to any of our AI services—including text creation, image generation, or other tools offered on zinvero.com—they are considered consumed and are not eligible for return or refund.
                       </p>
                     </li>
                     <li>
@@ -79,7 +79,7 @@ const ReturnPolicy = () => {
                   <p className="career-page-top__text-1" style={{ color: 'black' }}>
                     To initiate a return, please contact our support team
                     through our contact form on the website or by sending an
-                    email to support@nerbixa.com. In your message, include the
+                    email to support@zinvero.com. In your message, include the
                     following information:
                   </p>
                   <ul className="career-page-top__points-list list-unstyled pt-4">
@@ -117,7 +117,7 @@ const ReturnPolicy = () => {
                   </p>
                   <h4 className="career-page-top__title-3" style={{ color: 'black' }}>Contact Us</h4>
                   <p className="career-page-top__text-1" style={{ color: 'black' }}>
-                    If you have any questions or require assistance with a return, please reach out to our support team at support@nerbixa.com. Our team is ready to help with any concerns related to our return policy or any other aspect of our services.
+                    If you have any questions or require assistance with a return, please reach out to our support team at support@zinvero.com. Our team is ready to help with any concerns related to our return policy or any other aspect of our services.
                   </p>
                   <p className="career-page-top__text-1 pt-4">
                     We greatly value your feedback and are committed to delivering the best possible experience. Your satisfaction is our top priority, and we&apos;re here to support you whenever you need us.

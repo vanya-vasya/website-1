@@ -135,11 +135,11 @@ const styles = StyleSheet.create({
 });
 
 const company = {
-  name: "Nerbixa",
+  name: "Zinvero",
   company: "GUΑRΑΝТЕЕD GRЕΑТ SЕRVIСЕ LТD",
   address: "Dept 6162 43 Owston Road, Carcroft, Doncaster, United Kingdom, DN6 8DA",
-  website: "nerbixa.com",
-  email: "support@nerbixa.com",
+  website: "zinvero.com",
+  email: "support@zinvero.com",
   logo: "./public/logos/nerbixa-logo.png", // Official SVG logo
   companyNumber: "15982295",
 };

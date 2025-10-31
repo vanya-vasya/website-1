@@ -45,7 +45,7 @@ const CookiesPolicy = () => {
                 <div className="career-page-top__content-box-two">
 
                   <p className="career-page-top__text-1 pt-8" style={{ color: 'black' }}>
-                    At nerbixa.com, we use cookies to improve your browsing experience, deliver personalized features, and analyze site traffic. This Cookies Policy explains what cookies are, how we utilize them, and the choices you have for managing their use.
+                    At zinvero.com, we use cookies to improve your browsing experience, deliver personalized features, and analyze site traffic. This Cookies Policy explains what cookies are, how we utilize them, and the choices you have for managing their use.
                   </p>
                   <h4 className="career-page-top__title-3" style={{ color: 'black' }}>
                     What Are Cookies?
@@ -57,7 +57,7 @@ const CookiesPolicy = () => {
                     Types of Cookies We Use
                   </h4>
                   <p className="career-page-top__text-1" style={{ color: 'black' }}>
-                    We use the following types of cookies on nerbixa.com:
+                    We use the following types of cookies on zinvero.com:
                   </p>
                   <ul className="career-page-top__points-list list-unstyled pt-4">
                     <li>
@@ -148,7 +148,7 @@ const CookiesPolicy = () => {
                   </p>
                   <h4 className="career-page-top__title-3" style={{ color: 'black' }}>Contact Us</h4>
                   <p className="career-page-top__text-1" style={{ color: 'black' }}>
-                    If you have any questions regarding our use of cookies or need assistance managing your cookie preferences, feel free to contact us at support@nerbixa.com.
+                    If you have any questions regarding our use of cookies or need assistance managing your cookie preferences, feel free to contact us at support@zinvero.com.
                   </p>
                 </div>
               </div>
