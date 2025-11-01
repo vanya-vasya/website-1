@@ -168,7 +168,7 @@ describe('Navigation Tests', () => {
     });
 
     it('should extract and validate payment parameters', () => {
-      const referenceUrl = 'https://www.nerbixa.com/dashboard?status=successful&token=1f72c7eb04c4595d3c8bffda32d02c813c8a82850896735b0772db9f1b292bd0&uid=d94cc369-b68e-449b-950f-beb1d44ee0d3';
+      const referenceUrl = 'https://www.zinvero.com/dashboard?status=successful&token=1f72c7eb04c4595d3c8bffda32d02c813c8a82850896735b0772db9f1b292bd0&uid=d94cc369-b68e-449b-950f-beb1d44ee0d3';
       
       const url = new URL(referenceUrl);
       const siteStructure = url.pathname;
@@ -190,7 +190,7 @@ describe('Navigation Tests', () => {
     });
 
     it('should generate expected JSON structure from payment URL', () => {
-      const referenceUrl = 'https://www.nerbixa.com/dashboard?status=successful&token=1f72c7eb04c4595d3c8bffda32d02c813c8a82850896735b0772db9f1b292bd0&uid=d94cc369-b68e-449b-950f-beb1d44ee0d3';
+      const referenceUrl = 'https://www.zinvero.com/dashboard?status=successful&token=1f72c7eb04c4595d3c8bffda32d02c813c8a82850896735b0772db9f1b292bd0&uid=d94cc369-b68e-449b-950f-beb1d44ee0d3';
       
       const url = new URL(referenceUrl);
       const jsonData = {

@@ -31,7 +31,7 @@ npm install
 2. **Set up test database:**
 Create a separate test database in your Neon console or local Postgres, then create `.env.test`:
 ```env
-DATABASE_URL="postgresql://user:password@host/nerbixa_test?schema=public"
+DATABASE_URL="postgresql://user:password@host/zinvero_test?schema=public"
 WEBHOOK_SECRET="test_webhook_secret_key"
 ```
 

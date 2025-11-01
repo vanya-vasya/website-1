@@ -109,7 +109,7 @@ describe('Token Top-up System', () => {
     it('should extract token count from description correctly', () => {
       const testCases = [
         { description: 'Payment for 100 Tokens (100 Tokens)', expected: 100 },
-        { description: 'Nerbixa Tokens Purchase (50 Tokens)', expected: 50 },
+        { description: 'Zinvero Tokens Purchase (50 Tokens)', expected: 50 },
         { description: 'Token Top-up (250 Tokens)', expected: 250 },
         { description: 'Payment for tokens (1 Token)', expected: 1 },
       ];

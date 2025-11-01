@@ -198,8 +198,8 @@ async function testProductionEndpoint() {
   log.section('TEST 3: Production Endpoint Reachability');
   
   const endpoints = [
-    'https://www.nerbixa.com/api/webhooks/clerk',
-    'https://nerbixa.com/api/webhooks/clerk',
+    'https://www.zinvero.com/api/webhooks/clerk',
+    'https://zinvero.com/api/webhooks/clerk',
   ];
   
   for (const url of endpoints) {
@@ -291,7 +291,7 @@ async function testSignatureVerification() {
   log.section('TEST 4: Webhook Signature Verification');
   log.info('Testing webhook with invalid signature (should fail)...');
   
-  const url = 'https://www.nerbixa.com/api/webhooks/clerk';
+  const url = 'https://www.zinvero.com/api/webhooks/clerk';
   const testPayload = {
     data: {
       id: 'user_test_verification',

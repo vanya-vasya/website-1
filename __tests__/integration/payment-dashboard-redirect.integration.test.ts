@@ -18,8 +18,8 @@ const mockEnv = {
   NETWORX_SHOP_ID: 'test_shop_id',
   NETWORX_SECRET_KEY: 'test_secret_key',
   NETWORX_TEST_MODE: 'true',
-  NETWORX_RETURN_URL: 'https://nerbixa.com/dashboard',
-  NETWORX_WEBHOOK_URL: 'https://nerbixa.com/api/webhooks/networx',
+  NETWORX_RETURN_URL: 'https://zinvero.com/dashboard',
+  NETWORX_WEBHOOK_URL: 'https://zinvero.com/api/webhooks/networx',
 };
 
 describe('Payment Dashboard Redirect Integration', () => {
@@ -80,7 +80,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should use environment variable for return URL', async () => {
-      const customReturnUrl = 'https://custom.nerbixa.com/dashboard';
+      const customReturnUrl = 'https://custom.zinvero.com/dashboard';
       process.env.NETWORX_RETURN_URL = customReturnUrl;
 
       const requestBody = {
@@ -160,7 +160,7 @@ describe('Payment Dashboard Redirect Integration', () => {
 
   describe('Dashboard Redirect URL Format', () => {
     it('should format return URL correctly for successful payment', () => {
-      const baseUrl = 'https://nerbixa.com/dashboard';
+      const baseUrl = 'https://zinvero.com/dashboard';
       const orderId = 'test_order_789';
       const expectedUrl = `${baseUrl}?payment=success&order_id=${orderId}`;
 
@@ -174,7 +174,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should not redirect to old success page', () => {
-      const returnUrl = 'https://nerbixa.com/dashboard?payment=success&order_id=123';
+      const returnUrl = 'https://zinvero.com/dashboard?payment=success&order_id=123';
 
       expect(returnUrl).not.toContain('/payment/success');
       expect(returnUrl).toContain('/dashboard');
@@ -183,7 +183,7 @@ describe('Payment Dashboard Redirect Integration', () => {
 
   describe('Payment Status Handling', () => {
     it('should only include success status in return URL for successful payments', () => {
-      const successReturnUrl = 'https://nerbixa.com/dashboard?payment=success&order_id=123';
+      const successReturnUrl = 'https://zinvero.com/dashboard?payment=success&order_id=123';
       
       expect(successReturnUrl).toContain('payment=success');
       expect(successReturnUrl).not.toContain('payment=failed');
@@ -191,7 +191,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should handle query parameter extraction on dashboard', () => {
-      const url = new URL('https://nerbixa.com/dashboard?payment=success&order_id=gen_user_123_1234567890&token=abc123&status=successful&uid=def456');
+      const url = new URL('https://zinvero.com/dashboard?payment=success&order_id=gen_user_123_1234567890&token=abc123&status=successful&uid=def456');
       
       const paymentStatus = url.searchParams.get('payment');
       const orderId = url.searchParams.get('order_id');
@@ -203,7 +203,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should clean up query parameters after notification', () => {
-      const url = new URL('https://nerbixa.com/dashboard?payment=success&order_id=123&token=abc&status=successful&uid=xyz');
+      const url = new URL('https://zinvero.com/dashboard?payment=success&order_id=123&token=abc&status=successful&uid=xyz');
       
       // Simulate cleanup
       url.searchParams.delete('payment');
@@ -212,14 +212,14 @@ describe('Payment Dashboard Redirect Integration', () => {
       url.searchParams.delete('status');
       url.searchParams.delete('uid');
       
-      expect(url.toString()).toBe('https://nerbixa.com/dashboard');
+      expect(url.toString()).toBe('https://zinvero.com/dashboard');
       expect(url.search).toBe('');
     });
   });
 
   describe('Regression Tests: Prevent Failed Payment Success Redirect', () => {
     it('should NOT show success notification for failed payments', () => {
-      const failedUrl = new URL('https://nerbixa.com/dashboard?payment=failed&order_id=123');
+      const failedUrl = new URL('https://zinvero.com/dashboard?payment=failed&order_id=123');
       
       const paymentStatus = failedUrl.searchParams.get('payment');
       const shouldShowSuccess = paymentStatus === 'success';
@@ -228,7 +228,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should NOT show success notification for canceled payments', () => {
-      const canceledUrl = new URL('https://nerbixa.com/dashboard?payment=canceled&order_id=123');
+      const canceledUrl = new URL('https://zinvero.com/dashboard?payment=canceled&order_id=123');
       
       const paymentStatus = canceledUrl.searchParams.get('payment');
       const shouldShowSuccess = paymentStatus === 'success';
@@ -237,7 +237,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should NOT show success notification without order_id', () => {
-      const urlWithoutOrder = new URL('https://nerbixa.com/dashboard?payment=success');
+      const urlWithoutOrder = new URL('https://zinvero.com/dashboard?payment=success');
       
       const paymentStatus = urlWithoutOrder.searchParams.get('payment');
       const orderId = urlWithoutOrder.searchParams.get('order_id');
@@ -247,7 +247,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should NOT show success notification for pending payments', () => {
-      const pendingUrl = new URL('https://nerbixa.com/dashboard?payment=pending&order_id=123');
+      const pendingUrl = new URL('https://zinvero.com/dashboard?payment=pending&order_id=123');
       
       const paymentStatus = pendingUrl.searchParams.get('payment');
       const shouldShowSuccess = paymentStatus === 'success';
@@ -256,7 +256,7 @@ describe('Payment Dashboard Redirect Integration', () => {
     });
 
     it('should only trigger success notification once per session', () => {
-      const url = new URL('https://nerbixa.com/dashboard?payment=success&order_id=123');
+      const url = new URL('https://zinvero.com/dashboard?payment=success&order_id=123');
       
       // First load - should show notification
       let paymentStatus = url.searchParams.get('payment');
@@ -324,7 +324,7 @@ describe('Payment Dashboard Redirect Integration', () => {
 
       // Valid URL should not throw
       expect(() => {
-        new URL('https://nerbixa.com/dashboard');
+        new URL('https://zinvero.com/dashboard');
       }).not.toThrow();
     });
   });
@@ -344,13 +344,13 @@ describe('Payment Dashboard Redirect Integration', () => {
       // The return URL is just for user convenience
       // Webhook processing is what actually updates the balance
       
-      expect(mockEnv.NETWORX_WEBHOOK_URL).toBe('https://nerbixa.com/api/webhooks/networx');
+      expect(mockEnv.NETWORX_WEBHOOK_URL).toBe('https://zinvero.com/api/webhooks/networx');
       expect(mockEnv.NETWORX_WEBHOOK_URL).not.toContain('/payment/success');
     });
 
     it('should have separate webhook and return URLs', () => {
-      const returnUrl = 'https://nerbixa.com/dashboard';
-      const webhookUrl = 'https://nerbixa.com/api/webhooks/networx';
+      const returnUrl = 'https://zinvero.com/dashboard';
+      const webhookUrl = 'https://zinvero.com/api/webhooks/networx';
       
       expect(returnUrl).not.toBe(webhookUrl);
       expect(returnUrl).toContain('/dashboard');
@@ -412,7 +412,7 @@ describe('Dashboard Component Behavior', () => {
 
   describe('URL Cleanup After Notification', () => {
     it('should remove all payment-related query parameters', () => {
-      const url = new URL('https://nerbixa.com/dashboard?payment=success&order_id=gen_123&token=abc&status=successful&uid=xyz&other_param=keep');
+      const url = new URL('https://zinvero.com/dashboard?payment=success&order_id=gen_123&token=abc&status=successful&uid=xyz&other_param=keep');
       
       const paymentParams = ['payment', 'order_id', 'token', 'status', 'uid'];
       paymentParams.forEach(param => url.searchParams.delete(param));
@@ -426,14 +426,14 @@ describe('Dashboard Component Behavior', () => {
     });
 
     it('should maintain clean dashboard URL after cleanup', () => {
-      const url = new URL('https://nerbixa.com/dashboard?payment=success&order_id=123');
+      const url = new URL('https://zinvero.com/dashboard?payment=success&order_id=123');
       
       url.searchParams.delete('payment');
       url.searchParams.delete('order_id');
       
       expect(url.pathname).toBe('/dashboard');
       expect(url.search).toBe('');
-      expect(url.toString()).toBe('https://nerbixa.com/dashboard');
+      expect(url.toString()).toBe('https://zinvero.com/dashboard');
     });
   });
 });

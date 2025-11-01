@@ -91,7 +91,7 @@ export default function RootLayout({
           <GoogleAnalytics gaId="G-DYY23NK5V1" />
           <ModalProvider />
           <ToasterProvider />
-          <NextTopLoader color="#3c3c77" showSpinner={false} />
+          <NextTopLoader color="#00b8d4" showSpinner={false} />
           {children}
         </body>
       </html>

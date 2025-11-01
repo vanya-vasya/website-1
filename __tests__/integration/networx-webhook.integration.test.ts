@@ -106,7 +106,7 @@ describe("Networx Webhook Integration Tests", () => {
         type: 'payment',
         customer_email: testEmail,
         tracking_id: testClerkId,
-        description: 'Nerbixa Generations Purchase (100 Tokens)',
+        description: 'Zinvero Generations Purchase (100 Tokens)',
         payment_method_type: 'card',
         message: 'Payment successful',
         paid_at: new Date().toISOString(),

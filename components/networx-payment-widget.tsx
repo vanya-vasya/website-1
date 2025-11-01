@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Loader } from '@/components/loader';
 import { toast } from 'react-hot-toast';
 
 interface NetworkPaymentWidgetProps {
@@ -198,13 +197,13 @@ export const NetworkPaymentWidget: React.FC<NetworkPaymentWidgetProps> = ({
           <Button
             onClick={createPaymentToken}
             disabled={isLoading || !email}
-            className="w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 hover:from-cyan-500 hover:via-blue-600 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            className="w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 hover:from-cyan-500 hover:via-blue-600 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {isLoading ? (
-              <>
-                <Loader />
-                Creating token and redirecting...
-              </>
+              <div className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Creating token and redirecting...</span>
+              </div>
             ) : (
               'Create Payment Token'
             )}

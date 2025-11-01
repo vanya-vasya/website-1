@@ -14,8 +14,8 @@ describe('E2E: Payment to Dashboard Redirect Flow', () => {
     NETWORX_SHOP_ID: 'test_shop_id',
     NETWORX_SECRET_KEY: 'test_secret_key',
     NETWORX_TEST_MODE: 'true',
-    NETWORX_RETURN_URL: 'https://www.nerbixa.com/dashboard',
-    NETWORX_WEBHOOK_URL: 'https://www.nerbixa.com/api/webhooks/networx',
+    NETWORX_RETURN_URL: 'https://www.zinvero.com/dashboard',
+    NETWORX_WEBHOOK_URL: 'https://www.zinvero.com/api/webhooks/networx',
   };
 
   beforeAll(() => {
@@ -59,7 +59,7 @@ describe('E2E: Payment to Dashboard Redirect Flow', () => {
       amount,
       currency: 'USD',
       orderId,
-      description: `Nerbixa Generations Purchase (${generations} Tokens)`,
+      description: `Zinvero Generations Purchase (${generations} Tokens)`,
       customerEmail,
       userId,
     };
@@ -194,13 +194,13 @@ describe('E2E: Payment to Dashboard Redirect Flow', () => {
     const environments = [
       {
         name: 'Production',
-        NETWORX_RETURN_URL: 'https://www.nerbixa.com/dashboard',
-        expectedDomain: 'www.nerbixa.com',
+        NETWORX_RETURN_URL: 'https://www.zinvero.com/dashboard',
+        expectedDomain: 'www.zinvero.com',
       },
       {
         name: 'Staging',
-        NETWORX_RETURN_URL: 'https://staging.nerbixa.com/dashboard',
-        expectedDomain: 'staging.nerbixa.com',
+        NETWORX_RETURN_URL: 'https://staging.zinvero.com/dashboard',
+        expectedDomain: 'staging.zinvero.com',
       },
       {
         name: 'Development',

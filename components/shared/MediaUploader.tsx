@@ -66,7 +66,7 @@ const MediaUploader = ({
 
   return (
     <CldUploadWidget
-      uploadPreset="nerbixa"
+      uploadPreset="zinvero"
       options={{
         multiple: false,
         resourceType: "image",

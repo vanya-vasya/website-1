@@ -12,7 +12,7 @@
 describe('Payment Success to Dashboard Redirect', () => {
   describe('NetworkX Return URL Configuration', () => {
     it('should configure return URL to point to /payment/success', () => {
-      const expectedReturnUrl = 'https://nerbixa.com/payment/success';
+      const expectedReturnUrl = 'https://zinvero.com/payment/success';
       const defaultReturnUrl = process.env.NETWORX_RETURN_URL || expectedReturnUrl;
       
       expect(defaultReturnUrl).toContain('/payment/success');
@@ -20,7 +20,7 @@ describe('Payment Success to Dashboard Redirect', () => {
 
     it('should include order_id parameter in return URL', () => {
       const orderId = 'test-order-123';
-      const returnUrl = `https://nerbixa.com/payment/success?order_id=${orderId}`;
+      const returnUrl = `https://zinvero.com/payment/success?order_id=${orderId}`;
       
       const url = new URL(returnUrl);
       expect(url.searchParams.get('order_id')).toBe(orderId);
@@ -154,7 +154,7 @@ describe('Payment Success to Dashboard Redirect', () => {
       redirectFlow.push('NetworkX Payment Completed');
       
       // Step 2: NetworkX redirects to return URL
-      const returnUrl = 'https://nerbixa.com/payment/success?order_id=test-123';
+      const returnUrl = 'https://zinvero.com/payment/success?order_id=test-123';
       redirectFlow.push(`Redirect to: ${returnUrl}`);
       
       // Step 3: Success page loads and verifies balance

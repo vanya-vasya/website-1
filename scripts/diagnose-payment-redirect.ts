@@ -40,7 +40,7 @@ console.log('');
 console.log('🎯 CHECK 2: Default Return URL Configuration');
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
-const defaultReturnUrl = 'https://nerbixa.com/dashboard';
+const defaultReturnUrl = 'https://zinvero.com/dashboard';
 const actualReturnUrl = process.env.NETWORX_RETURN_URL || defaultReturnUrl;
 
 console.log(`   Default: ${defaultReturnUrl}`);
@@ -49,7 +49,7 @@ console.log(`   Actual:  ${actualReturnUrl}`);
 if (actualReturnUrl.includes('/payment/success')) {
   console.log('   ⚠️  WARNING: Return URL still points to /payment/success!');
   console.log('   This will cause 404 errors.');
-  console.log('   Set NETWORX_RETURN_URL to: https://www.nerbixa.com/dashboard');
+  console.log('   Set NETWORX_RETURN_URL to: https://www.zinvero.com/dashboard');
 } else if (actualReturnUrl.includes('/payment/callback')) {
   console.log('   ⚠️  WARNING: Return URL points to /payment/callback');
   console.log('   Consider using /dashboard directly for better UX.');
@@ -278,7 +278,7 @@ if (recommendations.length > 0) {
 
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log('Run with environment variables:');
-console.log('   NETWORX_RETURN_URL=https://www.nerbixa.com/dashboard \\');
+console.log('   NETWORX_RETURN_URL=https://www.zinvero.com/dashboard \\');
 console.log('   npx tsx scripts/diagnose-payment-redirect.ts');
 console.log('');
 
