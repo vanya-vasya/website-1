@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     other: [
       {
         rel: "mask-icon",
-        url: "/logos/nerbixa-icon.png",
+        url: "/logos/zinvero-icon.png",
       },
     ],
   },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: "AI-powered creative tools for everyone",
     images: [
       {
-        url: "/logos/nerbixa-icon.png",
+        url: "/logos/zinvero-icon.png",
         width: 512,
         height: 512,
         alt: "Zinvero",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Zinvero - AI-powered creative tools",
     description: "AI-powered creative tools for everyone",
-    images: ["/logos/nerbixa-icon.png"],
+    images: ["/logos/zinvero-icon.png"],
   },
 };
 

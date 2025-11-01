@@ -81,7 +81,7 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
             <div className="flex-center absolute left-[50%] top-[50%] size-full -translate-x-1/2 -translate-y-1/2 flex-col gap-2 rounded-[10px] bg-dark-700/90">
               <Image 
                 className='mx-auto animate-spin'
-                src="/logos/nerbixa-icon.png"
+                src="/logos/zinvero-icon.png"
                 width={50}
                 height={50}
                 alt="Loading"

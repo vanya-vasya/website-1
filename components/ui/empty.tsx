@@ -12,7 +12,7 @@ export const Empty = ({
       <div className="relative w-16 h-16 md:w-20 md:h-20">
         <Image
           alt="No content"
-          src="/logos/nerbixa-icon.png"
+          src="/logos/zinvero-icon.png"
           fill
           className="opacity-50"
         />
