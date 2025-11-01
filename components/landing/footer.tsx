@@ -213,7 +213,7 @@ const Footer = () => {
                 color: '#0f172a'
               }}
             >
-              zinvero, Copyright © {year}. All Rights Reserved.
+              Zinvero, Copyright © {year}. All Rights Reserved.
             </p>
           </div>
         </div>
