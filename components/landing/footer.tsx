@@ -213,7 +213,7 @@ const Footer = () => {
                 color: '#0f172a'
               }}
             >
-              Nerbixa, Copyright © {year}. All Rights Reserved.
+              zinvero, Copyright © {year}. All Rights Reserved.
             </p>
           </div>
         </div>
