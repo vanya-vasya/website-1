@@ -18,10 +18,10 @@ Implemented complete redirect flow from successful payment to Dashboard page acr
 **Changes:**
 ```typescript
 // Before: Incorrect default
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/dashboard';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/dashboard';
 
 // After: Correct default to success page
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/success';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/success';
 ```
 
 **Flow:**
@@ -257,17 +257,17 @@ npm test payment-dashboard-redirect
 
 ### Production
 ```env
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
 ```
 
 ### Development
 ```env
-SECURE-PROCESSOR_RETURN_URL=http://localhost:3000/payment/success
+SECURE_PROCESSOR_RETURN_URL=http://localhost:3000/payment/success
 ```
 
 ### Staging
 ```env
-SECURE-PROCESSOR_RETURN_URL=https://staging.nerbixa.com/payment/success
+SECURE_PROCESSOR_RETURN_URL=https://staging.nerbixa.com/payment/success
 ```
 
 **Note:** If not set, defaults to `https://nerbixa.com/payment/success`

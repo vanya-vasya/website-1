@@ -227,10 +227,10 @@ User → Success Page → Poll Verify Balance API
 Required environment variables:
 ```env
 # Secure-processor Payment Gateway
-SECURE-PROCESSOR_SHOP_ID=your_shop_id
-SECURE-PROCESSOR_SECRET_KEY=your_secret_key
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/payment
+SECURE_PROCESSOR_SHOP_ID=your_shop_id
+SECURE_PROCESSOR_SECRET_KEY=your_secret_key
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/payment
 
 # Database
 DATABASE_URL=your_database_url

@@ -24,7 +24,7 @@ The codebase **already has proper implementation** for test mode payments with:
 The issue is **NOT in the code** but likely due to:
 
 1. **Webhook Not Firing** - Secure-processor may not be configured to send webhooks for test transactions
-2. **Environment Configuration** - `SECURE-PROCESSOR_TEST_MODE` may not be set correctly
+2. **Environment Configuration** - `SECURE_PROCESSOR_TEST_MODE` may not be set correctly
 3. **Webhook URL** - Public webhook URL may not be accessible or configured in Secure-processor dashboard
 4. **Database Connection** - Connection issues with Neon serverless database
 
@@ -37,7 +37,7 @@ The issue is **NOT in the code** but likely due to:
 **Payment Creation API** (`/api/payment/secure-processor`)
 ```typescript
 // Line 110: Test mode is set from environment variable
-test: useTestMode, // SECURE-PROCESSOR_TEST_MODE === 'true'
+test: useTestMode, // SECURE_PROCESSOR_TEST_MODE === 'true'
 ```
 
 **Webhook Handler** (`/api/webhooks/secure-processor`)
@@ -109,15 +109,15 @@ const pool = new Pool({
 Required variables for test mode:
 ```bash
 # Payment provider
-SECURE-PROCESSOR_SHOP_ID=29959
-SECURE-PROCESSOR_SECRET_KEY=dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
-SECURE-PROCESSOR_TEST_MODE=true  # CRITICAL for test payments
+SECURE_PROCESSOR_SHOP_ID=29959
+SECURE_PROCESSOR_SECRET_KEY=dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
+SECURE_PROCESSOR_TEST_MODE=true  # CRITICAL for test payments
 
 # Database
 DATABASE_URL=postgresql://...  # Neon connection string
 
 # URLs
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor  # Must be publicly accessible
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor  # Must be publicly accessible
 ```
 
 ---
@@ -134,7 +134,7 @@ npm run payment:diagnose
 ```
 
 **What it checks:**
-- Environment variables (DATABASE_URL, SECURE-PROCESSOR_*, test mode)
+- Environment variables (DATABASE_URL, SECURE_PROCESSOR_*, test mode)
 - Database connection and schema
 - User and Transaction table existence and structure
 - Recent transactions and test data
@@ -342,7 +342,7 @@ npm run payment:diagnose
 ```
 
 **Solutions:**
-1. Set `SECURE-PROCESSOR_TEST_MODE=true` in environment
+1. Set `SECURE_PROCESSOR_TEST_MODE=true` in environment
 2. Verify in payment creation API logs:
    ```
    🔧 Payment API Configuration
@@ -539,9 +539,9 @@ WHERE
 ### Production Testing (Vercel)
 
 1. **Set environment variables in Vercel:**
-   - `SECURE-PROCESSOR_TEST_MODE=true`
+   - `SECURE_PROCESSOR_TEST_MODE=true`
    - `DATABASE_URL=<neon-connection-string>`
-   - All SECURE-PROCESSOR_* variables
+   - All SECURE_PROCESSOR_* variables
 
 2. **Configure webhook in Secure-processor dashboard:**
    - URL: `https://nerbixa.com/api/webhooks/secure-processor`
@@ -581,7 +581,7 @@ npm run payment:diagnose
 
 **If diagnostic fails:**
 - Database not connected → Check DATABASE_URL
-- Test mode not enabled → Set SECURE-PROCESSOR_TEST_MODE=true
+- Test mode not enabled → Set SECURE_PROCESSOR_TEST_MODE=true
 - Tables missing → Run `psql $DATABASE_URL -f db/schema.sql`
 
 ### Step 2: Test Webhook Locally (2-3 minutes)
@@ -683,7 +683,7 @@ npm run payment:reconcile interactive --live
 
 ### Production
 
-1. **Enable test mode** for testing: `SECURE-PROCESSOR_TEST_MODE=true`
+1. **Enable test mode** for testing: `SECURE_PROCESSOR_TEST_MODE=true`
 2. **Monitor Vercel logs** during test payments
 3. **Set up alerts** for webhook failures
 4. **Regular reconciliation** checks (daily or weekly)
@@ -704,8 +704,8 @@ npm run payment:reconcile interactive --live
 - `PAYMENT_FLOW_FIXED.md` - Previous payment flow fixes
 - `PAYMENT_FIXES_COMPLETE.md` - Complete fix documentation
 - `POST_TRANSACTION_FIX_SUMMARY.md` - Transaction processing fixes
-- `SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md` - Webhook configuration
-- `SECURE-PROCESSOR_ENV_SETUP.md` - Environment variables
+- `SECURE_PROCESSOR_WEBHOOK_FIX_SUMMARY.md` - Webhook configuration
+- `SECURE_PROCESSOR_ENV_SETUP.md` - Environment variables
 - `db/schema.sql` - Database schema
 
 ---

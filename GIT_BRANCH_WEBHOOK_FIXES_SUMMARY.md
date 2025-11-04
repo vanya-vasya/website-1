@@ -147,14 +147,14 @@ Status: Requires WEBHOOK_SECRET update in Vercel
 ```
 Current: .../payment/success (page, not webhook!)
 Required: .../api/webhooks/secure-processor (webhook endpoint)
-Status: Requires SECURE-PROCESSOR_WEBHOOK_URL update in Vercel
+Status: Requires SECURE_PROCESSOR_WEBHOOK_URL update in Vercel
 ```
 
 #### **3. Environment Variables Missing/Wrong**
 ```
 WEBHOOK_SECRET - Must match Clerk Signing Secret
-SECURE-PROCESSOR_WEBHOOK_URL - Must point to webhook endpoint
-SECURE-PROCESSOR_RETURN_URL - Should use www.nerbixa.com
+SECURE_PROCESSOR_WEBHOOK_URL - Must point to webhook endpoint
+SECURE_PROCESSOR_RETURN_URL - Should use www.nerbixa.com
 ```
 
 ---
@@ -166,11 +166,11 @@ SECURE-PROCESSOR_RETURN_URL - Should use www.nerbixa.com
 #### **1. Update Vercel Environment Variables:**
 ```
 WEBHOOK_SECRET = [Get from Clerk Dashboard]
-SECURE-PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
-SECURE-PROCESSOR_RETURN_URL = https://www.nerbixa.com/payment/success
-SECURE-PROCESSOR_SECRET_KEY = dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
-SECURE-PROCESSOR_SHOP_ID = 29959
-SECURE-PROCESSOR_TEST_MODE = true
+SECURE_PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_RETURN_URL = https://www.nerbixa.com/payment/success
+SECURE_PROCESSOR_SECRET_KEY = dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
+SECURE_PROCESSOR_SHOP_ID = 29959
+SECURE_PROCESSOR_TEST_MODE = true
 ```
 
 #### **2. Redeploy:**

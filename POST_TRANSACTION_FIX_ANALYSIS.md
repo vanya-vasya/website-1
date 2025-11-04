@@ -102,11 +102,11 @@ model Transaction {
 ### Environment Variables
 
 **Required Variables:**
-- `SECURE-PROCESSOR_SHOP_ID` - Merchant ID
-- `SECURE-PROCESSOR_SECRET_KEY` - Webhook signature verification key
-- `SECURE-PROCESSOR_RETURN_URL` - Success page URL (default: https://nerbixa.com/payment/success)
-- `SECURE-PROCESSOR_WEBHOOK_URL` - Webhook endpoint URL (default: https://nerbixa.com/api/webhooks/secure-processor)
-- `SECURE-PROCESSOR_TEST_MODE` - Enable test transactions (true/false)
+- `SECURE_PROCESSOR_SHOP_ID` - Merchant ID
+- `SECURE_PROCESSOR_SECRET_KEY` - Webhook signature verification key
+- `SECURE_PROCESSOR_RETURN_URL` - Success page URL (default: https://nerbixa.com/payment/success)
+- `SECURE_PROCESSOR_WEBHOOK_URL` - Webhook endpoint URL (default: https://nerbixa.com/api/webhooks/secure-processor)
+- `SECURE_PROCESSOR_TEST_MODE` - Enable test transactions (true/false)
 
 ---
 
@@ -271,11 +271,11 @@ After deployment, check logs for:
 
 ```bash
 # Secure-processor Configuration
-SECURE-PROCESSOR_SHOP_ID=your_shop_id_here
-SECURE-PROCESSOR_SECRET_KEY=your_secret_key_here
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
-SECURE-PROCESSOR_TEST_MODE=false  # Set to true for testing
+SECURE_PROCESSOR_SHOP_ID=your_shop_id_here
+SECURE_PROCESSOR_SECRET_KEY=your_secret_key_here
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_TEST_MODE=false  # Set to true for testing
 
 # Database
 DATABASE_URL=your_postgresql_connection_string
@@ -291,7 +291,7 @@ CLERK_SECRET_KEY=sk_***
 2. Navigate to Settings → Webhooks
 3. Add webhook URL: `https://nerbixa.com/api/webhooks/secure-processor`
 4. Enable events: `payment.success`, `payment.failed`, `payment.refunded`
-5. Save and verify webhook signature key matches `SECURE-PROCESSOR_SECRET_KEY`
+5. Save and verify webhook signature key matches `SECURE_PROCESSOR_SECRET_KEY`
 
 ---
 
@@ -365,7 +365,7 @@ If issues occur after deployment:
 
 - `PAYMENT_REDIRECT_IMPLEMENTATION.md` - Success page implementation
 - `PAYMENT_INTEGRATION_STATUS.md` - Overall payment integration status
-- `SECURE-PROCESSOR_ENV_SETUP.md` - Environment setup guide
+- `SECURE_PROCESSOR_ENV_SETUP.md` - Environment setup guide
 - `WEBHOOK_IMPLEMENTATION_GUIDE.md` - Webhook best practices
 
 ---

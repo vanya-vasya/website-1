@@ -21,22 +21,22 @@ Create a `.env.local` file in your project root:
 
 ```bash
 # Secure-processor Pay Configuration
-SECURE-PROCESSOR_SHOP_ID=29959
-SECURE-PROCESSOR_SECRET_KEY=dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
+SECURE_PROCESSOR_SHOP_ID=29959
+SECURE_PROCESSOR_SECRET_KEY=dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
 
 # API Configuration  
-SECURE-PROCESSOR_API_URL=https://gateway.secure-processorpay.com
-SECURE-PROCESSOR_TEST_MODE=true
+SECURE_PROCESSOR_API_URL=https://gateway.secure-processorpay.com
+SECURE_PROCESSOR_TEST_MODE=true
 
 # localhost:3001 URLs
-SECURE-PROCESSOR_RETURN_URL=http://localhost:3001/payment/success
-SECURE-PROCESSOR_CANCEL_URL=http://localhost:3001/payment/cancel
-SECURE-PROCESSOR_WEBHOOK_URL=http://localhost:3001/api/webhooks/secure-processor
+SECURE_PROCESSOR_RETURN_URL=http://localhost:3001/payment/success
+SECURE_PROCESSOR_CANCEL_URL=http://localhost:3001/payment/cancel
+SECURE_PROCESSOR_WEBHOOK_URL=http://localhost:3001/api/webhooks/secure-processor
 
 # Client-side variables
-NEXT_PUBLIC_SECURE-PROCESSOR_SHOP_ID=29959
-NEXT_PUBLIC_SECURE-PROCESSOR_TEST_MODE=true
-NEXT_PUBLIC_SECURE-PROCESSOR_WIDGET_URL=https://checkout.secure-processorpay.com
+NEXT_PUBLIC_SECURE_PROCESSOR_SHOP_ID=29959
+NEXT_PUBLIC_SECURE_PROCESSOR_TEST_MODE=true
+NEXT_PUBLIC_SECURE_PROCESSOR_WIDGET_URL=https://checkout.secure-processorpay.com
 NEXT_PUBLIC_APP_URL=http://localhost:3001
 ```
 
@@ -194,15 +194,15 @@ function MyPaymentPage() {
 
 2. **Payment Window Not Opening**
    - Check browser popup settings
-   - Verify `NEXT_PUBLIC_SECURE-PROCESSOR_WIDGET_URL` is set correctly
+   - Verify `NEXT_PUBLIC_SECURE_PROCESSOR_WIDGET_URL` is set correctly
 
 3. **Webhook Not Receiving Notifications**
-   - Ensure `SECURE-PROCESSOR_WEBHOOK_URL` points to correct localhost URL
+   - Ensure `SECURE_PROCESSOR_WEBHOOK_URL` points to correct localhost URL
    - Check firewall settings for port 3001
    - Verify webhook endpoint is accessible externally (use ngrok for testing)
 
 4. **Signature Verification Failing**
-   - Verify `SECURE-PROCESSOR_SECRET_KEY` matches exactly
+   - Verify `SECURE_PROCESSOR_SECRET_KEY` matches exactly
    - Check parameter sorting in signature creation
    - Ensure no extra whitespace in environment variables
 
@@ -218,7 +218,7 @@ npm install -g ngrok
 ngrok http 3001
 
 # Update webhook URL in .env.local
-SECURE-PROCESSOR_WEBHOOK_URL=https://your-ngrok-url.ngrok.io/api/webhooks/secure-processor
+SECURE_PROCESSOR_WEBHOOK_URL=https://your-ngrok-url.ngrok.io/api/webhooks/secure-processor
 ```
 
 ## 🎉 Ready to Use!

@@ -238,9 +238,9 @@ const PaymentTestPage = () => {
             <div>
               <h4 className="font-semibold mb-2">Environment Variables:</h4>
               <div className="space-y-1 text-gray-600">
-                <p>• SECURE-PROCESSOR_SHOP_ID: ✅ 29959</p>
-                <p>• SECURE-PROCESSOR_SECRET_KEY: ✅ Protected</p>
-                <p>• SECURE-PROCESSOR_TEST_MODE: ❌ Production Mode</p>
+                <p>• SECURE_PROCESSOR_SHOP_ID: ✅ 29959</p>
+                <p>• SECURE_PROCESSOR_SECRET_KEY: ✅ Protected</p>
+                <p>• SECURE_PROCESSOR_TEST_MODE: ❌ Production Mode</p>
               </div>
             </div>
             <div>

@@ -165,7 +165,7 @@ This report documents the comprehensive migration from `nerbixa.com` to `zinvero
 **Categories:**
 1. **Deployment Documentation** (DEPLOYMENT_*, GIT_*, FINAL_*, RELEASE_*)
 2. **Webhook Documentation** (WEBHOOK_*, CLERK_*, FIX_*)
-3. **Payment Documentation** (PAYMENT_*, SECURE-PROCESSOR_*)
+3. **Payment Documentation** (PAYMENT_*, SECURE_PROCESSOR_*)
 4. **Diagnostic Reports** (DIAGNOSTIC_*, INVESTIGATION_*)
 5. **Setup Guides** (QUICK_START_*, VERCEL_*, check-webhook-logs.md)
 6. **Implementation Docs** (docs/TOKEN_TOPUP_*, IMPLEMENTATION_*, NAVIGATION_*)
@@ -234,8 +234,8 @@ server {
 
 | Variable | Old Value | New Value | Priority |
 |----------|-----------|-----------|----------|
-| `SECURE-PROCESSOR_RETURN_URL` | `https://nerbixa.com/payment/success` | `https://www.zinvero.com/payment/success` | 🔴 Critical |
-| `SECURE-PROCESSOR_WEBHOOK_URL` | `https://nerbixa.com/api/webhooks/secure-processor` | `https://www.zinvero.com/api/webhooks/secure-processor` | 🔴 Critical |
+| `SECURE_PROCESSOR_RETURN_URL` | `https://nerbixa.com/payment/success` | `https://www.zinvero.com/payment/success` | 🔴 Critical |
+| `SECURE_PROCESSOR_WEBHOOK_URL` | `https://nerbixa.com/api/webhooks/secure-processor` | `https://www.zinvero.com/api/webhooks/secure-processor` | 🔴 Critical |
 | `OUTBOX_EMAIL` | `noreply@nerbixa.com` | `noreply@zinvero.com` | 🟡 Important |
 | `INBOX_EMAIL` | `support@nerbixa.com` | `support@zinvero.com` | 🟡 Important |
 
@@ -324,8 +324,8 @@ server {
 
 ### Deployment Steps 🔲
 - [ ] Update environment variables in Vercel
-  - [ ] SECURE-PROCESSOR_RETURN_URL
-  - [ ] SECURE-PROCESSOR_WEBHOOK_URL  
+  - [ ] SECURE_PROCESSOR_RETURN_URL
+  - [ ] SECURE_PROCESSOR_WEBHOOK_URL  
   - [ ] OUTBOX_EMAIL
   - [ ] INBOX_EMAIL
 - [ ] Update Clerk webhook endpoint

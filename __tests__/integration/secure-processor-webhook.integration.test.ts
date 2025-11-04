@@ -17,7 +17,7 @@ import crypto from "crypto";
 describe("Secure-processor Webhook Integration Tests", () => {
   const testClerkId = `test_secure-processor_user_${Date.now()}_${Math.random().toString(36).substring(7)}`;
   const testEmail = `secure-processor-test-${Date.now()}@example.com`;
-  const secretKey = process.env.SECURE-PROCESSOR_SECRET_KEY || 'dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950';
+  const secretKey = process.env.SECURE_PROCESSOR_SECRET_KEY || 'dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950';
 
   beforeAll(async () => {
     // Create test user

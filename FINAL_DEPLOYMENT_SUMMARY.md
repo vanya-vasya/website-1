@@ -68,20 +68,20 @@ c501b8d - feat: implement automatic dashboard redirect after payment
 ### ✅ Вы указали credentials:
 
 ```
-SECURE-PROCESSOR_SHOP_ID = 29959
-SECURE-PROCESSOR_SECRET_KEY = dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
+SECURE_PROCESSOR_SHOP_ID = 29959
+SECURE_PROCESSOR_SECRET_KEY = dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
 ```
 
 ### ✅ Убедитесь, что в Vercel настроены:
 
 **Обязательные переменные:**
-1. `SECURE-PROCESSOR_SHOP_ID` = `29959`
-2. `SECURE-PROCESSOR_SECRET_KEY` = `dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950`
+1. `SECURE_PROCESSOR_SHOP_ID` = `29959`
+2. `SECURE_PROCESSOR_SECRET_KEY` = `dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950`
 
 **Опциональные переменные:**
-3. `SECURE-PROCESSOR_TEST_MODE` = `true` (для тестирования) или `false` (для продакшена)
-4. `SECURE-PROCESSOR_RETURN_URL` = `https://your-domain.vercel.app/payment/success`
-5. `SECURE-PROCESSOR_WEBHOOK_URL` = `https://your-domain.vercel.app/api/webhooks/secure-processor`
+3. `SECURE_PROCESSOR_TEST_MODE` = `true` (для тестирования) или `false` (для продакшена)
+4. `SECURE_PROCESSOR_RETURN_URL` = `https://your-domain.vercel.app/payment/success`
+5. `SECURE_PROCESSOR_WEBHOOK_URL` = `https://your-domain.vercel.app/api/webhooks/secure-processor`
 
 ### Как проверить в Vercel:
 
@@ -103,7 +103,7 @@ SECURE-PROCESSOR_SECRET_KEY = dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3
 
 ### Troubleshooting
 5. **VERCEL_ENV_SETUP.md** - Настройка Vercel переменных
-6. **SECURE-PROCESSOR_AUTH_FIX.md** - Решение проблем с Secure-processor
+6. **SECURE_PROCESSOR_AUTH_FIX.md** - Решение проблем с Secure-processor
 7. **DEPLOYMENT_FIX.md** - История исправлений
 8. **PAYMENT_FLOW_DIAGRAM.md** - Визуальные диаграммы
 
@@ -183,8 +183,8 @@ npm test -- --coverage
 ## 🎯 Следующие шаги
 
 ### Шаг 1: Проверить Vercel Environment Variables
-- [ ] SECURE-PROCESSOR_SHOP_ID установлен
-- [ ] SECURE-PROCESSOR_SECRET_KEY установлен
+- [ ] SECURE_PROCESSOR_SHOP_ID установлен
+- [ ] SECURE_PROCESSOR_SECRET_KEY установлен
 - [ ] Variables applied to Production environment
 
 ### Шаг 2: Проверить Deployment
@@ -342,7 +342,7 @@ npm test -- --watch
 ## 🆘 Если что-то не работает
 
 ### 1. "Access denied" в логах
-- Проверьте SECURE-PROCESSOR_SHOP_ID и SECURE-PROCESSOR_SECRET_KEY в Vercel
+- Проверьте SECURE_PROCESSOR_SHOP_ID и SECURE_PROCESSOR_SECRET_KEY в Vercel
 - Убедитесь, что они установлены для Production environment
 - Сделайте Redeploy после изменения
 
@@ -359,7 +359,7 @@ npm test -- --watch
 ### 4. Полная документация
 - Читайте QUICK_FIX_SUMMARY.md
 - Проверьте VERCEL_ENV_SETUP.md
-- Смотрите SECURE-PROCESSOR_AUTH_FIX.md
+- Смотрите SECURE_PROCESSOR_AUTH_FIX.md
 
 ---
 

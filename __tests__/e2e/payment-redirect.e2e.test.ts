@@ -11,11 +11,11 @@ import { POST as paymentAPI } from '@/app/api/payment/secure-processor/route';
 
 describe('E2E: Payment to Dashboard Redirect Flow', () => {
   const mockEnv = {
-    SECURE-PROCESSOR_SHOP_ID: 'test_shop_id',
-    SECURE-PROCESSOR_SECRET_KEY: 'test_secret_key',
-    SECURE-PROCESSOR_TEST_MODE: 'true',
-    SECURE-PROCESSOR_RETURN_URL: 'https://www.zinvero.com/dashboard',
-    SECURE-PROCESSOR_WEBHOOK_URL: 'https://www.zinvero.com/api/webhooks/secure-processor',
+    SECURE_PROCESSOR_SHOP_ID: 'test_shop_id',
+    SECURE_PROCESSOR_SECRET_KEY: 'test_secret_key',
+    SECURE_PROCESSOR_TEST_MODE: 'true',
+    SECURE_PROCESSOR_RETURN_URL: 'https://www.zinvero.com/dashboard',
+    SECURE_PROCESSOR_WEBHOOK_URL: 'https://www.zinvero.com/api/webhooks/secure-processor',
   };
 
   beforeAll(() => {
@@ -194,17 +194,17 @@ describe('E2E: Payment to Dashboard Redirect Flow', () => {
     const environments = [
       {
         name: 'Production',
-        SECURE-PROCESSOR_RETURN_URL: 'https://www.zinvero.com/dashboard',
+        SECURE_PROCESSOR_RETURN_URL: 'https://www.zinvero.com/dashboard',
         expectedDomain: 'www.zinvero.com',
       },
       {
         name: 'Staging',
-        SECURE-PROCESSOR_RETURN_URL: 'https://staging.zinvero.com/dashboard',
+        SECURE_PROCESSOR_RETURN_URL: 'https://staging.zinvero.com/dashboard',
         expectedDomain: 'staging.zinvero.com',
       },
       {
         name: 'Development',
-        SECURE-PROCESSOR_RETURN_URL: 'http://localhost:3000/dashboard',
+        SECURE_PROCESSOR_RETURN_URL: 'http://localhost:3000/dashboard',
         expectedDomain: 'localhost:3000',
       },
     ];
@@ -212,7 +212,7 @@ describe('E2E: Payment to Dashboard Redirect Flow', () => {
     for (const env of environments) {
       console.log(`\nTesting ${env.name} environment...`);
       
-      process.env.SECURE-PROCESSOR_RETURN_URL = env.SECURE-PROCESSOR_RETURN_URL;
+      process.env.SECURE_PROCESSOR_RETURN_URL = env.SECURE_PROCESSOR_RETURN_URL;
 
       const request = new NextRequest('http://localhost:3000/api/payment/secure-processor', {
         method: 'POST',
@@ -252,7 +252,7 @@ describe('E2E: Payment to Dashboard Redirect Flow', () => {
     }
 
     // Restore original
-    process.env.SECURE-PROCESSOR_RETURN_URL = mockEnv.SECURE-PROCESSOR_RETURN_URL;
+    process.env.SECURE_PROCESSOR_RETURN_URL = mockEnv.SECURE_PROCESSOR_RETURN_URL;
   });
 
   it('should include all required parameters in return URL', async () => {

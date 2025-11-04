@@ -35,11 +35,11 @@ Redirected to: /dashboard?payment=success&order_id=...
 
 ```typescript
 // Changed from:
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/callback';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/callback';
 return_url: `${returnUrl}?order_id=${orderId}`
 
 // To:
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/dashboard';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/dashboard';
 return_url: `${returnUrl}?payment=success&order_id=${orderId}`
 ```
 
@@ -128,16 +128,16 @@ Created:
 
 ### For Vercel Deployment
 
-**Variable:** `SECURE-PROCESSOR_RETURN_URL`
+**Variable:** `SECURE_PROCESSOR_RETURN_URL`
 
 **Production:**
 ```bash
-SECURE-PROCESSOR_RETURN_URL=https://www.nerbixa.com/dashboard
+SECURE_PROCESSOR_RETURN_URL=https://www.nerbixa.com/dashboard
 ```
 
 **Development:**
 ```bash
-SECURE-PROCESSOR_RETURN_URL=http://localhost:3000/dashboard
+SECURE_PROCESSOR_RETURN_URL=http://localhost:3000/dashboard
 ```
 
 **Default (if not set):**
@@ -244,7 +244,7 @@ Toast
 - [x] Committed and pushed to main
 
 ### Vercel Deployment
-- [ ] Set `SECURE-PROCESSOR_RETURN_URL` environment variable
+- [ ] Set `SECURE_PROCESSOR_RETURN_URL` environment variable
 - [ ] Deploy to production
 - [ ] Verify environment variable is active
 
@@ -301,7 +301,7 @@ Toast
 3. Verify toast provider is configured
 
 ### Still redirecting to old page?
-1. Check `SECURE-PROCESSOR_RETURN_URL` in Vercel
+1. Check `SECURE_PROCESSOR_RETURN_URL` in Vercel
 2. Clear browser cache
 3. Verify deployment picked up changes
 
@@ -316,7 +316,7 @@ Toast
 
 1. **Deploy to Vercel**
    - Push triggers automatic deployment
-   - Set `SECURE-PROCESSOR_RETURN_URL` environment variable
+   - Set `SECURE_PROCESSOR_RETURN_URL` environment variable
 
 2. **Test in Production**
    - Use test mode payment

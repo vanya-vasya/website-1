@@ -1,7 +1,7 @@
 ./middleware.ts
 ./types/index.d.ts
 ./tailwind.config.js
-./SECURE-PROCESSOR_SETUP_LOCALHOST.md
+./SECURE_PROCESSOR_SETUP_LOCALHOST.md
 ./app/layout.tsx
 ./app/api/music/route.ts
 ./app/api/video/route.ts
@@ -74,7 +74,7 @@
 ./prisma/schema.prisma
 ./README.md
 ./types.ts
-./SECURE-PROCESSOR_ENV_SETUP.md
+./SECURE_PROCESSOR_ENV_SETUP.md
 ./components/user-avatar.tsx
 ./components/guest-sidebar.tsx
 ./components/ui/alert-dialog.tsx

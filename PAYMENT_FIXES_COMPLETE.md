@@ -120,7 +120,7 @@ useEffect(() => {
    - Changed countdown from 5s to instant (100ms)
    - Updated UI messages (removed countdown display)
 
-3. **`SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md`**
+3. **`SECURE_PROCESSOR_WEBHOOK_FIX_SUMMARY.md`**
    - Comprehensive documentation of all fixes
 
 ---
@@ -148,11 +148,11 @@ git push origin main
    - Update in Vercel: Settings → Environment Variables
    - ⚠️ MUST match exactly (case-sensitive)
 
-2. **`SECURE-PROCESSOR_WEBHOOK_URL`**
+2. **`SECURE_PROCESSOR_WEBHOOK_URL`**
    - Current (wrong): `https://website-2-fl3pjwurp-vladis-projects-8c520e18.vercel.app/payment/success`
    - **Set to:** `https://www.nerbixa.com/api/webhooks/secure-processor`
 
-3. **`SECURE-PROCESSOR_RETURN_URL`**
+3. **`SECURE_PROCESSOR_RETURN_URL`**
    - **Set to:** `https://www.nerbixa.com/payment/success`
 
 ### Step 3: Redeploy on Vercel
@@ -276,8 +276,8 @@ git push origin main
    ```bash
    # Check in Vercel:
    - WEBHOOK_SECRET (from Clerk)
-   - SECURE-PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
-   - SECURE-PROCESSOR_SECRET_KEY (from Secure-processor)
+   - SECURE_PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
+   - SECURE_PROCESSOR_SECRET_KEY (from Secure-processor)
    - DATABASE_URL (from Neon)
    ```
 
@@ -335,7 +335,7 @@ git push origin main
 - **Clerk Webhook Setup:** `CLERK_WEBHOOK_SETUP_README.md`
 - **Webhook Diagnostics:** `WEBHOOK_DIAGNOSTIC_FINAL_REPORT.md`
 - **Complete Fix Summary:** `WEBHOOK_COMPLETE_FIX_SUMMARY.md`
-- **Secure-processor Fix Details:** `SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md`
+- **Secure-processor Fix Details:** `SECURE_PROCESSOR_WEBHOOK_FIX_SUMMARY.md`
 
 ---
 
@@ -354,8 +354,8 @@ git push origin main
 ## ⚠️ **IMPORTANT REMINDERS**
 
 1. **Update `WEBHOOK_SECRET` in Vercel** (from Clerk Dashboard)
-2. **Update `SECURE-PROCESSOR_WEBHOOK_URL`** = `https://www.nerbixa.com/api/webhooks/secure-processor`
-3. **Update `SECURE-PROCESSOR_RETURN_URL`** = `https://www.nerbixa.com/payment/success`
+2. **Update `SECURE_PROCESSOR_WEBHOOK_URL`** = `https://www.nerbixa.com/api/webhooks/secure-processor`
+3. **Update `SECURE_PROCESSOR_RETURN_URL`** = `https://www.nerbixa.com/payment/success`
 4. **Update Clerk webhook URL** = `https://www.nerbixa.com/api/webhooks/clerk` (with `www`)
 5. **Redeploy on Vercel** after environment variable updates
 6. **Test thoroughly** with real registration and payment

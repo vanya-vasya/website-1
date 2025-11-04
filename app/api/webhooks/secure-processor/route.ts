@@ -133,9 +133,9 @@ export async function POST(request: NextRequest) {
     }
 
     if (signature) {
-      const secretKey = process.env.SECURE-PROCESSOR_SECRET_KEY || 'dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950';
+      const secretKey = process.env.SECURE_PROCESSOR_SECRET_KEY || 'dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950';
       if (!secretKey) {
-        console.error('❌ SECURE-PROCESSOR_SECRET_KEY not configured');
+        console.error('❌ SECURE_PROCESSOR_SECRET_KEY not configured');
         return NextResponse.json(
           { error: 'Server configuration error' },
           { status: 500 }

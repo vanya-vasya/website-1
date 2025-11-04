@@ -280,8 +280,8 @@ Webhook → Verify signature ✅ → Extract tokens → No match ❌
 ## Production Checklist
 
 Before deploying:
-- [ ] Verify SECURE-PROCESSOR_SECRET_KEY is set
-- [ ] Verify SECURE-PROCESSOR_WEBHOOK_URL is correct
+- [ ] Verify SECURE_PROCESSOR_SECRET_KEY is set
+- [ ] Verify SECURE_PROCESSOR_WEBHOOK_URL is correct
 - [ ] Test webhook signature verification
 - [ ] Run integration tests
 - [ ] Deploy to staging first

@@ -40,7 +40,7 @@ https://www.nerbixa.com/dashboard?payment=success&order_id=...
 **Changed:**
 ```typescript
 // OLD
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/callback';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/callback';
 
 settings: {
   return_url: `${returnUrl}?order_id=${orderId}`,
@@ -50,7 +50,7 @@ settings: {
 **To:**
 ```typescript
 // NEW
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/dashboard';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/dashboard';
 
 settings: {
   return_url: `${returnUrl}?payment=success&order_id=${orderId}`,
@@ -161,17 +161,17 @@ useEffect(() => {
 
 ### Production
 ```bash
-SECURE-PROCESSOR_RETURN_URL=https://www.nerbixa.com/dashboard
+SECURE_PROCESSOR_RETURN_URL=https://www.nerbixa.com/dashboard
 ```
 
 ### Development
 ```bash
-SECURE-PROCESSOR_RETURN_URL=http://localhost:3000/dashboard
+SECURE_PROCESSOR_RETURN_URL=http://localhost:3000/dashboard
 ```
 
 ### Staging
 ```bash
-SECURE-PROCESSOR_RETURN_URL=https://staging.nerbixa.com/dashboard
+SECURE_PROCESSOR_RETURN_URL=https://staging.nerbixa.com/dashboard
 ```
 
 **Note:** If not set, defaults to `https://nerbixa.com/dashboard`
@@ -364,7 +364,7 @@ Shown        in DB
 - [x] Test locally
 
 ### During Deployment
-- [ ] Set `SECURE-PROCESSOR_RETURN_URL` in Vercel environment variables
+- [ ] Set `SECURE_PROCESSOR_RETURN_URL` in Vercel environment variables
 - [ ] Deploy to production
 - [ ] Verify environment variable is set
 
@@ -382,7 +382,7 @@ Shown        in DB
 ### Via Vercel Dashboard
 1. Go to: https://vercel.com/vanya-vasya/website-2/settings/environment-variables
 2. Add new variable:
-   - **Name:** `SECURE-PROCESSOR_RETURN_URL`
+   - **Name:** `SECURE_PROCESSOR_RETURN_URL`
    - **Value:** `https://www.nerbixa.com/dashboard`
    - **Environment:** Production, Preview, Development
 3. Save and redeploy
@@ -390,15 +390,15 @@ Shown        in DB
 ### Via Vercel CLI
 ```bash
 # Production
-vercel env add SECURE-PROCESSOR_RETURN_URL production
+vercel env add SECURE_PROCESSOR_RETURN_URL production
 # Enter: https://www.nerbixa.com/dashboard
 
 # Preview
-vercel env add SECURE-PROCESSOR_RETURN_URL preview
+vercel env add SECURE_PROCESSOR_RETURN_URL preview
 # Enter: https://www.nerbixa.com/dashboard
 
 # Development
-vercel env add SECURE-PROCESSOR_RETURN_URL development
+vercel env add SECURE_PROCESSOR_RETURN_URL development
 # Enter: http://localhost:3000/dashboard
 ```
 
@@ -418,7 +418,7 @@ vercel env add SECURE-PROCESSOR_RETURN_URL development
 3. Check that useEffect is running
 
 ### Still redirecting to old /payment/success?
-1. Check `SECURE-PROCESSOR_RETURN_URL` environment variable
+1. Check `SECURE_PROCESSOR_RETURN_URL` environment variable
 2. Verify deployment picked up new code
 3. Clear browser cache
 4. Check Secure-processor dashboard configuration

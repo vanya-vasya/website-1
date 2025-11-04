@@ -323,8 +323,8 @@ Line 46:
 
 ### Network Configuration
 
-- `SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md` - **7 occurrences**
-- `SECURE-PROCESSOR_ENV_SETUP.md` - **4 occurrences**
+- `SECURE_PROCESSOR_WEBHOOK_FIX_SUMMARY.md` - **7 occurrences**
+- `SECURE_PROCESSOR_ENV_SETUP.md` - **4 occurrences**
 
 ### Git and Deployment
 

@@ -94,7 +94,7 @@ npm test -- secure-processor-webhook.integration.test.ts
 curl https://nerbixa.com/api/webhooks/secure-processor
 
 # 2. Make a test payment
-# (Use Secure-processor test mode with SECURE-PROCESSOR_TEST_MODE=true)
+# (Use Secure-processor test mode with SECURE_PROCESSOR_TEST_MODE=true)
 
 # 3. Check logs
 vercel logs --follow
@@ -176,7 +176,7 @@ grep "❌ Webhook Processing Error" production.log | tail -5
 
 2. **Common issues:**
    - Missing tracking_id → Check payment API sends userId
-   - Invalid signature → Check SECURE-PROCESSOR_SECRET_KEY
+   - Invalid signature → Check SECURE_PROCESSOR_SECRET_KEY
    - User not found → Check clerkId matches
    - Invalid description → Must include "(X Tokens)"
 
@@ -185,11 +185,11 @@ grep "❌ Webhook Processing Error" production.log | tail -5
 ## Environment Variables
 
 ```bash
-SECURE-PROCESSOR_SHOP_ID=29959
-SECURE-PROCESSOR_SECRET_KEY=dbfb6f...
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
-SECURE-PROCESSOR_TEST_MODE=false  # Set to true for testing
+SECURE_PROCESSOR_SHOP_ID=29959
+SECURE_PROCESSOR_SECRET_KEY=dbfb6f...
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_TEST_MODE=false  # Set to true for testing
 ```
 
 ---

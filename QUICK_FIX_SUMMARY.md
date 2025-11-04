@@ -15,16 +15,16 @@
 
 **Добавьте ДВЕ обязательные переменные:**
 
-#### 1️⃣ SECURE-PROCESSOR_SHOP_ID
+#### 1️⃣ SECURE_PROCESSOR_SHOP_ID
 ```
-Name: SECURE-PROCESSOR_SHOP_ID
+Name: SECURE_PROCESSOR_SHOP_ID
 Value: [ваш Shop ID от Secure-processor]
 Environment: ✅ Production ✅ Preview ✅ Development
 ```
 
-#### 2️⃣ SECURE-PROCESSOR_SECRET_KEY  
+#### 2️⃣ SECURE_PROCESSOR_SECRET_KEY  
 ```
-Name: SECURE-PROCESSOR_SECRET_KEY
+Name: SECURE_PROCESSOR_SECRET_KEY
 Value: [ваш Secret Key от Secure-processor]
 Environment: ✅ Production ✅ Preview ✅ Development
 ```
@@ -42,7 +42,7 @@ Environment: ✅ Production ✅ Preview ✅ Development
 - Запросите тестовые credentials
 
 **Вариант C: Временно протестировать без реальных платежей**
-- Добавьте переменную: `SECURE-PROCESSOR_TEST_MODE=true`
+- Добавьте переменную: `SECURE_PROCESSOR_TEST_MODE=true`
 - Это активирует mock mode (но всё равно нужны Shop ID и Secret Key)
 
 ### Шаг 2: Перезапустить Deployment
@@ -79,14 +79,14 @@ Environment: ✅ Production ✅ Preview ✅ Development
 Если нужны детали, смотрите:
 
 1. **VERCEL_ENV_SETUP.md** - Полная инструкция по настройке Vercel
-2. **SECURE-PROCESSOR_AUTH_FIX.md** - Troubleshooting проблем с Secure-processor
+2. **SECURE_PROCESSOR_AUTH_FIX.md** - Troubleshooting проблем с Secure-processor
 3. **DEPLOYMENT_FIX.md** - История предыдущих исправлений
 
 ## 🆘 Если не работает
 
 ### Проблема 1: "Payment gateway not configured"
 **Причина:** Переменные не добавлены в Vercel  
-**Решение:** Добавьте SECURE-PROCESSOR_SHOP_ID и SECURE-PROCESSOR_SECRET_KEY
+**Решение:** Добавьте SECURE_PROCESSOR_SHOP_ID и SECURE_PROCESSOR_SECRET_KEY
 
 ### Проблема 2: "Access denied" продолжается
 **Причина:** Неверные credentials или аккаунт не активирован  
@@ -127,7 +127,7 @@ c501b8d - feat: implement automatic dashboard redirect after payment
 
 ## 🎯 Главное
 
-**Без правильных SECURE-PROCESSOR_SHOP_ID и SECURE-PROCESSOR_SECRET_KEY платежи работать не будут!**
+**Без правильных SECURE_PROCESSOR_SHOP_ID и SECURE_PROCESSOR_SECRET_KEY платежи работать не будут!**
 
 1. Добавьте переменные в Vercel
 2. Перезапустите deployment

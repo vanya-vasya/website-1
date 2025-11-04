@@ -300,11 +300,11 @@ ORDER BY t."createdAt" DESC;
 
 1. **Environment Variables** (verify in production):
 ```bash
-SECURE-PROCESSOR_SHOP_ID=your_shop_id
-SECURE-PROCESSOR_SECRET_KEY=your_secret_key
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
-SECURE-PROCESSOR_TEST_MODE=false
+SECURE_PROCESSOR_SHOP_ID=your_shop_id
+SECURE_PROCESSOR_SECRET_KEY=your_secret_key
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_TEST_MODE=false
 DATABASE_URL=postgresql://...
 ```
 
@@ -328,7 +328,7 @@ curl -X GET https://nerbixa-staging.vercel.app/api/webhooks/secure-processor
 ```
 
 2. **Test on Staging**
-   - Initiate test payment (SECURE-PROCESSOR_TEST_MODE=true)
+   - Initiate test payment (SECURE_PROCESSOR_TEST_MODE=true)
    - Verify webhook processing in logs
    - Check database updates
    - Verify redirect flow
@@ -336,7 +336,7 @@ curl -X GET https://nerbixa-staging.vercel.app/api/webhooks/secure-processor
 3. **Deploy to Production**
 ```bash
 # Set production env vars
-vercel env add SECURE-PROCESSOR_TEST_MODE
+vercel env add SECURE_PROCESSOR_TEST_MODE
 # Enter: false
 
 # Deploy

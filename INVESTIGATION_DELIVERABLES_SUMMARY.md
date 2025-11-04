@@ -29,7 +29,7 @@ The investigation revealed that the **webhook handler and payment processing cod
 The problem is **NOT in the code** but likely due to:
 
 1. **Webhook Not Configured** in Secure-processor dashboard for test transactions
-2. **Environment Variable** `SECURE-PROCESSOR_TEST_MODE` not set to `true`
+2. **Environment Variable** `SECURE_PROCESSOR_TEST_MODE` not set to `true`
 3. **Webhook URL** not publicly accessible or incorrectly configured
 4. **Database Connection Issues** with Neon serverless
 5. **Test Webhooks Disabled** in Secure-processor merchant settings
@@ -66,8 +66,8 @@ npm run payment:diagnose
 
 📋 Step 1: Checking Environment Variables
 DATABASE_URL: ✅ Set
-SECURE-PROCESSOR_SHOP_ID: ✅ Set (29959)
-SECURE-PROCESSOR_TEST_MODE: true
+SECURE_PROCESSOR_SHOP_ID: ✅ Set (29959)
+SECURE_PROCESSOR_TEST_MODE: true
 
 📋 Step 2: Checking Database Connection and Schema
 ✅ Database connection successful
@@ -354,9 +354,9 @@ npm run test:ci
 ### Environment Check
 ```
 ✅ DATABASE_URL: Set and valid
-✅ SECURE-PROCESSOR_SHOP_ID: 29959
-✅ SECURE-PROCESSOR_SECRET_KEY: Configured
-✅ SECURE-PROCESSOR_TEST_MODE: true
+✅ SECURE_PROCESSOR_SHOP_ID: 29959
+✅ SECURE_PROCESSOR_SECRET_KEY: Configured
+✅ SECURE_PROCESSOR_TEST_MODE: true
 ✅ NODE_ENV: development/production
 ```
 
@@ -472,7 +472,7 @@ vercel logs --follow
 ### Recommendations
 
 #### Immediate Actions
-1. ✅ Set `SECURE-PROCESSOR_TEST_MODE=true` in environment
+1. ✅ Set `SECURE_PROCESSOR_TEST_MODE=true` in environment
 2. ✅ Configure webhook URL in Secure-processor dashboard
 3. ✅ Enable test webhooks in merchant settings
 4. ✅ Verify DATABASE_URL is correct
@@ -585,9 +585,9 @@ vercel logs --follow
 
 **Environment Setup:**
 ```bash
-SECURE-PROCESSOR_TEST_MODE=true          # Enable test mode
+SECURE_PROCESSOR_TEST_MODE=true          # Enable test mode
 DATABASE_URL=postgresql://...   # Neon connection
-SECURE-PROCESSOR_WEBHOOK_URL=https://... # Public webhook URL
+SECURE_PROCESSOR_WEBHOOK_URL=https://... # Public webhook URL
 ```
 
 **Monitoring:**

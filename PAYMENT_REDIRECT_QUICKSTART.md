@@ -98,10 +98,10 @@ npm test -- --coverage
 
 ```env
 # Already configured (from existing setup)
-SECURE-PROCESSOR_SHOP_ID=29959
-SECURE-PROCESSOR_SECRET_KEY=your_secret_key
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/payment
+SECURE_PROCESSOR_SHOP_ID=29959
+SECURE_PROCESSOR_SECRET_KEY=your_secret_key
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/payment
 
 # Clerk (already configured)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key

@@ -246,11 +246,11 @@ await client.query(
    - Get from Clerk Dashboard → Webhooks → Signing Secret
    - ⚠️ MUST match exactly (case-sensitive)
 
-2. **`SECURE-PROCESSOR_WEBHOOK_URL`**
+2. **`SECURE_PROCESSOR_WEBHOOK_URL`**
    - ✅ CORRECT: `https://www.nerbixa.com/api/webhooks/secure-processor`
    - ❌ WRONG: `https://www.nerbixa.com/payment/success`
 
-3. **`SECURE-PROCESSOR_RETURN_URL`**
+3. **`SECURE_PROCESSOR_RETURN_URL`**
    - ✅ CORRECT: `https://www.nerbixa.com/payment/success`
 
 4. **Redeploy** after updating environment variables
@@ -347,8 +347,8 @@ await client.query(
 
 2. **Update Vercel Environment Variables**
    - `WEBHOOK_SECRET` (from Clerk)
-   - `SECURE-PROCESSOR_WEBHOOK_URL` = `https://www.nerbixa.com/api/webhooks/secure-processor`
-   - `SECURE-PROCESSOR_RETURN_URL` = `https://www.nerbixa.com/payment/success`
+   - `SECURE_PROCESSOR_WEBHOOK_URL` = `https://www.nerbixa.com/api/webhooks/secure-processor`
+   - `SECURE_PROCESSOR_RETURN_URL` = `https://www.nerbixa.com/payment/success`
 
 3. **Redeploy on Vercel**
    - Triggers automatic deployment from GitHub

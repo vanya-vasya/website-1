@@ -110,18 +110,18 @@ class PaymentFlowDiagnostic {
     }
 
     // Check Secure-processor credentials
-    this.results.environment.secureProcessorShopId = !!process.env.SECURE-PROCESSOR_SHOP_ID;
-    console.log(`\nSECURE-PROCESSOR_SHOP_ID: ${this.results.environment.secureProcessorShopId ? '✅ Set (' + process.env.SECURE-PROCESSOR_SHOP_ID + ')' : '❌ Missing'}`);
+    this.results.environment.secureProcessorShopId = !!process.env.SECURE_PROCESSOR_SHOP_ID;
+    console.log(`\nSECURE_PROCESSOR_SHOP_ID: ${this.results.environment.secureProcessorShopId ? '✅ Set (' + process.env.SECURE_PROCESSOR_SHOP_ID + ')' : '❌ Missing'}`);
     
-    this.results.environment.secureProcessorSecretKey = !!process.env.SECURE-PROCESSOR_SECRET_KEY;
-    console.log(`SECURE-PROCESSOR_SECRET_KEY: ${this.results.environment.secureProcessorSecretKey ? '✅ Set (***' + process.env.SECURE-PROCESSOR_SECRET_KEY?.slice(-4) + ')' : '❌ Missing'}`);
+    this.results.environment.secureProcessorSecretKey = !!process.env.SECURE_PROCESSOR_SECRET_KEY;
+    console.log(`SECURE_PROCESSOR_SECRET_KEY: ${this.results.environment.secureProcessorSecretKey ? '✅ Set (***' + process.env.SECURE_PROCESSOR_SECRET_KEY?.slice(-4) + ')' : '❌ Missing'}`);
 
     // Check test mode
-    this.results.environment.secureProcessorTestMode = process.env.SECURE-PROCESSOR_TEST_MODE;
-    console.log(`SECURE-PROCESSOR_TEST_MODE: ${this.results.environment.secureProcessorTestMode || 'not set'}`);
+    this.results.environment.secureProcessorTestMode = process.env.SECURE_PROCESSOR_TEST_MODE;
+    console.log(`SECURE_PROCESSOR_TEST_MODE: ${this.results.environment.secureProcessorTestMode || 'not set'}`);
     if (this.results.environment.secureProcessorTestMode !== 'true') {
-      this.results.issues.push('SECURE-PROCESSOR_TEST_MODE is not set to "true" - test payments might not work correctly');
-      this.results.recommendations.push('Set SECURE-PROCESSOR_TEST_MODE=true in .env.local for test payments');
+      this.results.issues.push('SECURE_PROCESSOR_TEST_MODE is not set to "true" - test payments might not work correctly');
+      this.results.recommendations.push('Set SECURE_PROCESSOR_TEST_MODE=true in .env.local for test payments');
     }
 
     console.log(`\nNODE_ENV: ${this.results.environment.nodeEnv}`);

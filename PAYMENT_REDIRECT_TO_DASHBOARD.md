@@ -59,10 +59,10 @@ User sees Dashboard with updated credits
 **Change:**
 ```typescript
 // BEFORE
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/success';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/success';
 
 // AFTER
-const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/callback';
+const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://nerbixa.com/payment/callback';
 ```
 
 **Impact:**
@@ -180,25 +180,25 @@ if (status && status !== 'successful' && status !== 'success') {
 
 ```bash
 # Secure-processor Return URL - Updated to callback page
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/callback
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/callback
 
 # Production
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/callback
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/callback
 
 # Staging
-SECURE-PROCESSOR_RETURN_URL=https://staging.nerbixa.com/payment/callback
+SECURE_PROCESSOR_RETURN_URL=https://staging.nerbixa.com/payment/callback
 
 # Local Development
-SECURE-PROCESSOR_RETURN_URL=http://localhost:3000/payment/callback
+SECURE_PROCESSOR_RETURN_URL=http://localhost:3000/payment/callback
 ```
 
 ### Other Secure-processor Variables (unchanged)
 
 ```bash
-SECURE-PROCESSOR_SHOP_ID=your_shop_id
-SECURE-PROCESSOR_SECRET_KEY=your_secret_key
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
-SECURE-PROCESSOR_TEST_MODE=false
+SECURE_PROCESSOR_SHOP_ID=your_shop_id
+SECURE_PROCESSOR_SECRET_KEY=your_secret_key
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_TEST_MODE=false
 ```
 
 ---
@@ -341,8 +341,8 @@ vercel --prod
 
 2. **Update Environment Variables:**
 ```bash
-# Update SECURE-PROCESSOR_RETURN_URL in Vercel dashboard or via CLI
-vercel env add SECURE-PROCESSOR_RETURN_URL production
+# Update SECURE_PROCESSOR_RETURN_URL in Vercel dashboard or via CLI
+vercel env add SECURE_PROCESSOR_RETURN_URL production
 # Enter: https://nerbixa.com/payment/callback
 ```
 
@@ -367,8 +367,8 @@ If issues occur:
 1. **Quick Rollback:**
 ```bash
 # Revert environment variable
-vercel env rm SECURE-PROCESSOR_RETURN_URL production
-vercel env add SECURE-PROCESSOR_RETURN_URL production
+vercel env rm SECURE_PROCESSOR_RETURN_URL production
+vercel env add SECURE_PROCESSOR_RETURN_URL production
 # Enter: https://nerbixa.com/payment/success
 ```
 

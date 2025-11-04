@@ -297,8 +297,8 @@ OPENAI_API_KEY=sk-test-dummy-key-for-build ⚠️ (dummy)
 **Missing Variables:**
 ```bash
 WEBHOOK_SECRET=*** ❌ CRITICAL - Required for Clerk webhook
-SECURE-PROCESSOR_SHOP_ID=*** ⚠️ (has default in code)
-SECURE-PROCESSOR_SECRET_KEY=*** ⚠️ (has default in code)
+SECURE_PROCESSOR_SHOP_ID=*** ⚠️ (has default in code)
+SECURE_PROCESSOR_SECRET_KEY=*** ⚠️ (has default in code)
 ```
 
 #### Production Environment (Vercel)
@@ -309,12 +309,12 @@ SECURE-PROCESSOR_SECRET_KEY=*** ⚠️ (has default in code)
 - WEBHOOK_SECRET ← **CRITICAL**
 - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 - CLERK_SECRET_KEY
-- SECURE-PROCESSOR_SHOP_ID
-- SECURE-PROCESSOR_SECRET_KEY
-- SECURE-PROCESSOR_TEST_MODE
-- SECURE-PROCESSOR_RETURN_URL
-- SECURE-PROCESSOR_WEBHOOK_URL
-- NEXT_PUBLIC_SECURE-PROCESSOR_SHOP_ID
+- SECURE_PROCESSOR_SHOP_ID
+- SECURE_PROCESSOR_SECRET_KEY
+- SECURE_PROCESSOR_TEST_MODE
+- SECURE_PROCESSOR_RETURN_URL
+- SECURE_PROCESSOR_WEBHOOK_URL
+- NEXT_PUBLIC_SECURE_PROCESSOR_SHOP_ID
 
 **Status:** Cannot verify without Vercel access
 
@@ -1124,7 +1124,7 @@ Error: Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local
 
 **Potential Errors:**
 1. **User not found:** If tracking_id doesn't match existing clerkId
-2. **Signature invalid:** If SECURE-PROCESSOR_SECRET_KEY incorrect
+2. **Signature invalid:** If SECURE_PROCESSOR_SECRET_KEY incorrect
 3. **Duplicate transaction:** If webhook delivered twice
 
 **Verification:**

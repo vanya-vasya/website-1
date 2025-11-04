@@ -47,11 +47,11 @@ npm run payment:webhook-sim success <your-clerk-user-id> 100
 npm run payment:diagnose
 
 # Should show:
-# SECURE-PROCESSOR_TEST_MODE: true  ✅
+# SECURE_PROCESSOR_TEST_MODE: true  ✅
 # DATABASE_URL: Set  ✅
 
 # If not, add to .env.local:
-# SECURE-PROCESSOR_TEST_MODE=true
+# SECURE_PROCESSOR_TEST_MODE=true
 ```
 
 ### Issue: Webhook not firing
@@ -141,7 +141,7 @@ psql $DATABASE_URL -c "SELECT email, availableGenerations FROM \"User\" WHERE cl
 ### Production Testing
 ```bash
 # 1. Set test mode in Vercel
-SECURE-PROCESSOR_TEST_MODE=true
+SECURE_PROCESSOR_TEST_MODE=true
 
 # 2. Make test payment
 
@@ -191,9 +191,9 @@ OR
 ```bash
 # .env.local
 DATABASE_URL=postgresql://user:pass@host/database
-SECURE-PROCESSOR_SHOP_ID=29959
-SECURE-PROCESSOR_SECRET_KEY=dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
-SECURE-PROCESSOR_TEST_MODE=true  # IMPORTANT FOR TEST PAYMENTS
+SECURE_PROCESSOR_SHOP_ID=29959
+SECURE_PROCESSOR_SECRET_KEY=dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
+SECURE_PROCESSOR_TEST_MODE=true  # IMPORTANT FOR TEST PAYMENTS
 ```
 
 ### Verify Setup
@@ -202,9 +202,9 @@ npm run payment:diagnose
 
 # Should show:
 # DATABASE_URL: ✅ Set
-# SECURE-PROCESSOR_SHOP_ID: ✅ Set (29959)
-# SECURE-PROCESSOR_SECRET_KEY: ✅ Set (***8950)
-# SECURE-PROCESSOR_TEST_MODE: true
+# SECURE_PROCESSOR_SHOP_ID: ✅ Set (29959)
+# SECURE_PROCESSOR_SECRET_KEY: ✅ Set (***8950)
+# SECURE_PROCESSOR_TEST_MODE: true
 ```
 
 ---

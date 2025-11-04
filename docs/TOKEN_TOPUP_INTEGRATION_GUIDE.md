@@ -140,11 +140,11 @@ Add to `.env`:
 
 ```bash
 # NetworkX Pay Configuration
-SECURE-PROCESSOR_SHOP_ID=your_shop_id
-SECURE-PROCESSOR_SECRET_KEY=your_secret_key
-SECURE-PROCESSOR_TEST_MODE=true # Set to false for production
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/dashboard
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_SHOP_ID=your_shop_id
+SECURE_PROCESSOR_SECRET_KEY=your_secret_key
+SECURE_PROCESSOR_TEST_MODE=true # Set to false for production
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/dashboard
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 
 # Email Configuration (Titan Email)
 OUTBOX_EMAIL=noreply@nerbixa.com

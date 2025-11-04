@@ -15,11 +15,11 @@ import { POST as paymentAPI } from '@/app/api/payment/secure-processor/route';
 
 // Mock environment variables
 const mockEnv = {
-  SECURE-PROCESSOR_SHOP_ID: 'test_shop_id',
-  SECURE-PROCESSOR_SECRET_KEY: 'test_secret_key',
-  SECURE-PROCESSOR_TEST_MODE: 'true',
-  SECURE-PROCESSOR_RETURN_URL: 'https://zinvero.com/dashboard',
-  SECURE-PROCESSOR_WEBHOOK_URL: 'https://zinvero.com/api/webhooks/secure-processor',
+  SECURE_PROCESSOR_SHOP_ID: 'test_shop_id',
+  SECURE_PROCESSOR_SECRET_KEY: 'test_secret_key',
+  SECURE_PROCESSOR_TEST_MODE: 'true',
+  SECURE_PROCESSOR_RETURN_URL: 'https://zinvero.com/dashboard',
+  SECURE_PROCESSOR_WEBHOOK_URL: 'https://zinvero.com/api/webhooks/secure-processor',
 };
 
 describe('Payment Dashboard Redirect Integration', () => {
@@ -81,7 +81,7 @@ describe('Payment Dashboard Redirect Integration', () => {
 
     it('should use environment variable for return URL', async () => {
       const customReturnUrl = 'https://custom.zinvero.com/dashboard';
-      process.env.SECURE-PROCESSOR_RETURN_URL = customReturnUrl;
+      process.env.SECURE_PROCESSOR_RETURN_URL = customReturnUrl;
 
       const requestBody = {
         amount: 5.00,
@@ -119,7 +119,7 @@ describe('Payment Dashboard Redirect Integration', () => {
       expect(requestData.checkout.settings.return_url).toContain('payment=success');
 
       // Restore original env
-      process.env.SECURE-PROCESSOR_RETURN_URL = mockEnv.SECURE-PROCESSOR_RETURN_URL;
+      process.env.SECURE_PROCESSOR_RETURN_URL = mockEnv.SECURE_PROCESSOR_RETURN_URL;
     });
 
     it('should include order_id in return URL', async () => {
@@ -281,11 +281,11 @@ describe('Payment Dashboard Redirect Integration', () => {
   describe('Error Cases', () => {
     it('should handle missing environment variables gracefully', async () => {
       // Temporarily remove env vars
-      const tempShopId = process.env.SECURE-PROCESSOR_SHOP_ID;
-      const tempSecretKey = process.env.SECURE-PROCESSOR_SECRET_KEY;
+      const tempShopId = process.env.SECURE_PROCESSOR_SHOP_ID;
+      const tempSecretKey = process.env.SECURE_PROCESSOR_SECRET_KEY;
       
-      delete process.env.SECURE-PROCESSOR_SHOP_ID;
-      delete process.env.SECURE-PROCESSOR_SECRET_KEY;
+      delete process.env.SECURE_PROCESSOR_SHOP_ID;
+      delete process.env.SECURE_PROCESSOR_SECRET_KEY;
 
       const requestBody = {
         amount: 10.00,
@@ -305,8 +305,8 @@ describe('Payment Dashboard Redirect Integration', () => {
       expect(response.status).toBe(500);
 
       // Restore env vars
-      process.env.SECURE-PROCESSOR_SHOP_ID = tempShopId;
-      process.env.SECURE-PROCESSOR_SECRET_KEY = tempSecretKey;
+      process.env.SECURE_PROCESSOR_SHOP_ID = tempShopId;
+      process.env.SECURE_PROCESSOR_SECRET_KEY = tempSecretKey;
     });
 
     it('should handle malformed return URLs', () => {
@@ -344,8 +344,8 @@ describe('Payment Dashboard Redirect Integration', () => {
       // The return URL is just for user convenience
       // Webhook processing is what actually updates the balance
       
-      expect(mockEnv.SECURE-PROCESSOR_WEBHOOK_URL).toBe('https://zinvero.com/api/webhooks/secure-processor');
-      expect(mockEnv.SECURE-PROCESSOR_WEBHOOK_URL).not.toContain('/payment/success');
+      expect(mockEnv.SECURE_PROCESSOR_WEBHOOK_URL).toBe('https://zinvero.com/api/webhooks/secure-processor');
+      expect(mockEnv.SECURE_PROCESSOR_WEBHOOK_URL).not.toContain('/payment/success');
     });
 
     it('should have separate webhook and return URLs', () => {

@@ -36,25 +36,25 @@
 
 Добавьте следующие переменные для **Production**:
 
-#### 1. SECURE-PROCESSOR_SHOP_ID
+#### 1. SECURE_PROCESSOR_SHOP_ID
 ```
 Value: ваш_shop_id_от_secure-processor
 Environment: Production, Preview, Development (отметьте все)
 ```
 
-#### 2. SECURE-PROCESSOR_SECRET_KEY
+#### 2. SECURE_PROCESSOR_SECRET_KEY
 ```
 Value: ваш_secret_key_от_secure-processor
 Environment: Production, Preview, Development (отметьте все)
 ```
 
-#### 3. SECURE-PROCESSOR_TEST_MODE
+#### 3. SECURE_PROCESSOR_TEST_MODE
 ```
 Value: true  (для тестирования) или false (для продакшена)
 Environment: Production, Preview, Development
 ```
 
-#### 4. SECURE-PROCESSOR_RETURN_URL
+#### 4. SECURE_PROCESSOR_RETURN_URL
 ```
 Value: https://your-vercel-domain.vercel.app/payment/success
 Environment: Production
@@ -66,7 +66,7 @@ Value: https://website-2-git-feature-payment-redirect-vladis-projects-8c520e18.v
 Value: http://localhost:3000/payment/success
 ```
 
-#### 5. SECURE-PROCESSOR_WEBHOOK_URL
+#### 5. SECURE_PROCESSOR_WEBHOOK_URL
 ```
 Value: https://your-vercel-domain.vercel.app/api/webhooks/secure-processor
 Environment: Production
@@ -82,21 +82,21 @@ Value: https://website-2-git-feature-payment-redirect-vladis-projects-8c520e18.v
 ### Конфигурация для Production (реальные платежи)
 
 ```env
-SECURE-PROCESSOR_SHOP_ID=29959
-SECURE-PROCESSOR_SECRET_KEY=your_real_secret_key_from_secure-processor_dashboard
-SECURE-PROCESSOR_TEST_MODE=false
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_SHOP_ID=29959
+SECURE_PROCESSOR_SECRET_KEY=your_real_secret_key_from_secure-processor_dashboard
+SECURE_PROCESSOR_TEST_MODE=false
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 ```
 
 ### Конфигурация для Testing (тестовые платежи)
 
 ```env
-SECURE-PROCESSOR_SHOP_ID=your_test_shop_id
-SECURE-PROCESSOR_SECRET_KEY=your_test_secret_key
-SECURE-PROCESSOR_TEST_MODE=true
-SECURE-PROCESSOR_RETURN_URL=https://your-preview-url.vercel.app/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://your-preview-url.vercel.app/api/webhooks/secure-processor
+SECURE_PROCESSOR_SHOP_ID=your_test_shop_id
+SECURE_PROCESSOR_SECRET_KEY=your_test_secret_key
+SECURE_PROCESSOR_TEST_MODE=true
+SECURE_PROCESSOR_RETURN_URL=https://your-preview-url.vercel.app/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://your-preview-url.vercel.app/api/webhooks/secure-processor
 ```
 
 ---
@@ -153,7 +153,7 @@ git push
 
 ### Ошибка 1: "Payment gateway not configured"
 
-**Причина:** Переменные SECURE-PROCESSOR_SHOP_ID или SECURE-PROCESSOR_SECRET_KEY не установлены
+**Причина:** Переменные SECURE_PROCESSOR_SHOP_ID или SECURE_PROCESSOR_SECRET_KEY не установлены
 
 **Решение:**
 1. Проверьте, что переменные добавлены в Vercel
@@ -200,8 +200,8 @@ git push
 
 Если используете custom domain:
 ```env
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 ```
 
 Убедитесь, что:
@@ -213,11 +213,11 @@ SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 
 ## Проверочный список
 
-- [ ] SECURE-PROCESSOR_SHOP_ID добавлен в Vercel
-- [ ] SECURE-PROCESSOR_SECRET_KEY добавлен в Vercel
-- [ ] SECURE-PROCESSOR_TEST_MODE установлен (true/false)
-- [ ] SECURE-PROCESSOR_RETURN_URL настроен правильно
-- [ ] SECURE-PROCESSOR_WEBHOOK_URL настроен правильно
+- [ ] SECURE_PROCESSOR_SHOP_ID добавлен в Vercel
+- [ ] SECURE_PROCESSOR_SECRET_KEY добавлен в Vercel
+- [ ] SECURE_PROCESSOR_TEST_MODE установлен (true/false)
+- [ ] SECURE_PROCESSOR_RETURN_URL настроен правильно
+- [ ] SECURE_PROCESSOR_WEBHOOK_URL настроен правильно
 - [ ] Все переменные имеют правильный Environment
 - [ ] Deployment перезапущен после изменений
 - [ ] Логи проверены на ошибки
@@ -247,7 +247,7 @@ npm run dev
 vercel env ls
 
 # Добавить переменную через CLI
-vercel env add SECURE-PROCESSOR_SHOP_ID
+vercel env add SECURE_PROCESSOR_SHOP_ID
 
 # Перезапустить deployment
 vercel --prod

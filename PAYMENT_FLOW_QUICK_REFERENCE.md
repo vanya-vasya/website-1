@@ -91,11 +91,11 @@ Payment Complete → Secure-processor Webhook → Create Transaction + Update Ba
 
 ```env
 # Secure-processor Payment Gateway
-SECURE-PROCESSOR_SHOP_ID=your_shop_id
-SECURE-PROCESSOR_SECRET_KEY=your_secret_key
-SECURE-PROCESSOR_TEST_MODE=true  # Set to false for production
-SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_SHOP_ID=your_shop_id
+SECURE_PROCESSOR_SECRET_KEY=your_secret_key
+SECURE_PROCESSOR_TEST_MODE=true  # Set to false for production
+SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 
 # Clerk Authentication
 WEBHOOK_SECRET=your_clerk_webhook_secret
@@ -110,7 +110,7 @@ DATABASE_URL=your_postgresql_connection_string
 
 ### Payment not processing?
 1. Check webhook logs in console
-2. Verify `SECURE-PROCESSOR_SECRET_KEY` is correct
+2. Verify `SECURE_PROCESSOR_SECRET_KEY` is correct
 3. Ensure user exists (created via Clerk)
 4. Check `Transaction.webhookEventId` for duplicates
 

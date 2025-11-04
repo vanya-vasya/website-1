@@ -24,7 +24,7 @@ DATABASE    TEST MODE
   ERROR      NOT SET
     │           │
     │           ▼
-    │      Set SECURE-PROCESSOR_
+    │      Set SECURE_PROCESSOR_
     │      TEST_MODE=true
     │           │
     │           ▼
@@ -143,10 +143,10 @@ npm run payment:reconcile interactive --live
 ```bash
 # 1. Check environment (30s)
 npm run payment:diagnose
-# Look for: SECURE-PROCESSOR_TEST_MODE
+# Look for: SECURE_PROCESSOR_TEST_MODE
 
 # If not "true":
-#   → Set SECURE-PROCESSOR_TEST_MODE=true
+#   → Set SECURE_PROCESSOR_TEST_MODE=true
 #   → Redeploy
 
 # If "true":
@@ -256,7 +256,7 @@ vercel logs --follow
 OR
 ❌ Invalid webhook signature
 → Signature required in production
-→ Check SECURE-PROCESSOR_SECRET_KEY
+→ Check SECURE_PROCESSOR_SECRET_KEY
 → For test mode: set transaction.test = true
 ```
 

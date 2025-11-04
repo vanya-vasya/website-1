@@ -34,14 +34,14 @@ notification_url: 'https://website-2-fl3pjwurp.../payment/success'
 ❌ This is a PAGE, not a WEBHOOK!
 ```
 
-**Root Cause:** `SECURE-PROCESSOR_WEBHOOK_URL` in Vercel points to wrong endpoint
+**Root Cause:** `SECURE_PROCESSOR_WEBHOOK_URL` in Vercel points to wrong endpoint
 
 **Status:** ⚠️ **USER MUST FIX IN VERCEL**
 
 **Action Required:**
 ```
-WRONG: SECURE-PROCESSOR_WEBHOOK_URL = .../payment/success
-RIGHT: SECURE-PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
+WRONG: SECURE_PROCESSOR_WEBHOOK_URL = .../payment/success
+RIGHT: SECURE_PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
 ```
 
 ---
@@ -122,11 +122,11 @@ Value: whsec_[YOUR_ACTUAL_SECRET_FROM_CLERK]
 ```bash
 # Update these in Vercel → Environment Variables:
 
-SECURE-PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
-SECURE-PROCESSOR_RETURN_URL = https://www.nerbixa.com/payment/success
-SECURE-PROCESSOR_SHOP_ID = 29959
-SECURE-PROCESSOR_SECRET_KEY = dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
-SECURE-PROCESSOR_TEST_MODE = true
+SECURE_PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
+SECURE_PROCESSOR_RETURN_URL = https://www.nerbixa.com/payment/success
+SECURE_PROCESSOR_SHOP_ID = 29959
+SECURE_PROCESSOR_SECRET_KEY = dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
+SECURE_PROCESSOR_TEST_MODE = true
 ```
 
 **Time:** 5 minutes
@@ -235,8 +235,8 @@ Settings → Environment Variables
 
 Required:
 - WEBHOOK_SECRET (from Clerk)
-- SECURE-PROCESSOR_WEBHOOK_URL = .../api/webhooks/secure-processor
-- SECURE-PROCESSOR_RETURN_URL = .../payment/success
+- SECURE_PROCESSOR_WEBHOOK_URL = .../api/webhooks/secure-processor
+- SECURE_PROCESSOR_RETURN_URL = .../payment/success
 - DATABASE_URL (already set)
 ```
 
@@ -276,7 +276,7 @@ Shows:
 
 ### **Issue: Secure-processor webhook still empty**
 
-**Solution:** SECURE-PROCESSOR_WEBHOOK_URL must be webhook endpoint, not page
+**Solution:** SECURE_PROCESSOR_WEBHOOK_URL must be webhook endpoint, not page
 - Wrong: `.../payment/success`
 - Right: `.../api/webhooks/secure-processor`
 
@@ -325,7 +325,7 @@ After completing all actions:
 
 1. ✅ Code fixes deployed (this commit)
 2. ⚠️ Update WEBHOOK_SECRET in Vercel (user action)
-3. ⚠️ Update SECURE-PROCESSOR_WEBHOOK_URL in Vercel (user action)
+3. ⚠️ Update SECURE_PROCESSOR_WEBHOOK_URL in Vercel (user action)
 4. ⚠️ Redeploy (user action)
 5. 🧪 Test everything
 

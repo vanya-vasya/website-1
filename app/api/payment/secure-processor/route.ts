@@ -49,18 +49,18 @@ export async function POST(request: NextRequest) {
     }
 
     // Secure-processor Pay API credentials and configuration
-    const shopId = process.env.SECURE-PROCESSOR_SHOP_ID;
-    const secretKey = process.env.SECURE-PROCESSOR_SECRET_KEY;
+    const shopId = process.env.SECURE_PROCESSOR_SHOP_ID;
+    const secretKey = process.env.SECURE_PROCESSOR_SECRET_KEY;
     
     // Check if credentials are configured
     if (!shopId || !secretKey) {
       console.error('❌ SECURE-PROCESSOR CREDENTIALS NOT CONFIGURED');
-      console.error('Please set SECURE-PROCESSOR_SHOP_ID and SECURE-PROCESSOR_SECRET_KEY in environment variables');
+      console.error('Please set SECURE_PROCESSOR_SHOP_ID and SECURE_PROCESSOR_SECRET_KEY in environment variables');
       return NextResponse.json(
         { 
           error: 'Payment gateway not configured',
           message: 'Please contact support. Payment credentials are missing.',
-          details: 'SECURE-PROCESSOR_SHOP_ID and SECURE-PROCESSOR_SECRET_KEY must be set in environment variables'
+          details: 'SECURE_PROCESSOR_SHOP_ID and SECURE_PROCESSOR_SECRET_KEY must be set in environment variables'
         },
         { status: 500 }
       );
@@ -68,9 +68,9 @@ export async function POST(request: NextRequest) {
     
     // Force correct API URL for hosted payment page - override any incorrect environment variable
     const apiUrl = 'https://checkout.secure-processorpay.com';  // Correct API URL for hosted payment page
-    const returnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || 'https://www.zinvero.com/payment/success';
-    const notificationUrl = process.env.SECURE-PROCESSOR_WEBHOOK_URL || 'https://www.zinvero.com/api/webhooks/secure-processor';
-    const useTestMode = process.env.SECURE-PROCESSOR_TEST_MODE === 'true'; // Enable test transactions
+    const returnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || 'https://www.zinvero.com/payment/success';
+    const notificationUrl = process.env.SECURE_PROCESSOR_WEBHOOK_URL || 'https://www.zinvero.com/api/webhooks/secure-processor';
+    const useTestMode = process.env.SECURE_PROCESSOR_TEST_MODE === 'true'; // Enable test transactions
     
     console.log('═════════════════════════════════════════════════════════');
     console.log('🔧 Payment API Configuration');
@@ -82,8 +82,8 @@ export async function POST(request: NextRequest) {
       useTestMode,
       returnUrl,
       notificationUrl,
-      hasEnvReturnUrl: !!process.env.SECURE-PROCESSOR_RETURN_URL,
-      envReturnUrlValue: process.env.SECURE-PROCESSOR_RETURN_URL ? process.env.SECURE-PROCESSOR_RETURN_URL.substring(0, 30) + '...' : 'NOT SET (using default)'
+      hasEnvReturnUrl: !!process.env.SECURE_PROCESSOR_RETURN_URL,
+      envReturnUrlValue: process.env.SECURE_PROCESSOR_RETURN_URL ? process.env.SECURE_PROCESSOR_RETURN_URL.substring(0, 30) + '...' : 'NOT SET (using default)'
     });
     console.log('═════════════════════════════════════════════════════════');
     
@@ -177,8 +177,8 @@ export async function POST(request: NextRequest) {
                 details: 'Authentication error - credentials may be invalid or account not activated',
                 supportInfo: {
                   action: 'Please verify Secure-processor credentials in environment variables',
-                  required: ['SECURE-PROCESSOR_SHOP_ID', 'SECURE-PROCESSOR_SECRET_KEY'],
-                  documentation: 'Check SECURE-PROCESSOR_AUTH_FIX.md for troubleshooting steps'
+                  required: ['SECURE_PROCESSOR_SHOP_ID', 'SECURE_PROCESSOR_SECRET_KEY'],
+                  documentation: 'Check SECURE_PROCESSOR_AUTH_FIX.md for troubleshooting steps'
                 }
               },
               { status: 503 }
@@ -269,8 +269,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const shopId = process.env.SECURE-PROCESSOR_SHOP_ID || '29959';
-    const secretKey = process.env.SECURE-PROCESSOR_SECRET_KEY || 'dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950';
+    const shopId = process.env.SECURE_PROCESSOR_SHOP_ID || '29959';
+    const secretKey = process.env.SECURE_PROCESSOR_SECRET_KEY || 'dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950';
     const apiUrl = 'https://checkout.secure-processorpay.com'; // HPP API URL
 
     // Send request to Secure-processor HPP API for status check

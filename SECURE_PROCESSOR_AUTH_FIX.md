@@ -21,10 +21,10 @@ Secure-processor API Error Response: {"response":{"status":"error","message":"Ac
 
 **Проверьте в Vercel:**
 ```
-SECURE-PROCESSOR_SHOP_ID=your_real_shop_id
-SECURE-PROCESSOR_SECRET_KEY=your_real_secret_key
-SECURE-PROCESSOR_RETURN_URL=https://your-domain.vercel.app/payment/success
-SECURE-PROCESSOR_WEBHOOK_URL=https://your-domain.vercel.app/api/webhooks/secure-processor
+SECURE_PROCESSOR_SHOP_ID=your_real_shop_id
+SECURE_PROCESSOR_SECRET_KEY=your_real_secret_key
+SECURE_PROCESSOR_RETURN_URL=https://your-domain.vercel.app/payment/success
+SECURE_PROCESSOR_WEBHOOK_URL=https://your-domain.vercel.app/api/webhooks/secure-processor
 ```
 
 ### 3. API Endpoint

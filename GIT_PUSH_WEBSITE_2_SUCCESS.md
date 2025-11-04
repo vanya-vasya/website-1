@@ -31,7 +31,7 @@
 ### Files Modified (4 files):
 1. ✅ `app/api/webhooks/secure-processor/route.ts` - Fixed webhook payload parsing
 2. ✅ `app/(dashboard)/payment/success/page.tsx` - Added instant redirect
-3. ✅ `SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md` - Comprehensive fix documentation
+3. ✅ `SECURE_PROCESSOR_WEBHOOK_FIX_SUMMARY.md` - Comprehensive fix documentation
 4. ✅ `GIT_BRANCH_WEBHOOK_FIXES_SUMMARY.md` - Git push summary
 
 ---
@@ -106,7 +106,7 @@ d3209b7 (HEAD -> feature/webhook-fixes-complete-2025,
 Files changed:
 - app/api/webhooks/secure-processor/route.ts
 - app/(dashboard)/payment/success/page.tsx
-- SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md
+- SECURE_PROCESSOR_WEBHOOK_FIX_SUMMARY.md
 - GIT_BRANCH_WEBHOOK_FIXES_SUMMARY.md
 ```
 
@@ -118,8 +118,8 @@ Files changed:
 
 1. **Update Vercel Environment Variables**
    ```
-   SECURE-PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
-   SECURE-PROCESSOR_RETURN_URL = https://www.nerbixa.com/payment/success
+   SECURE_PROCESSOR_WEBHOOK_URL = https://www.nerbixa.com/api/webhooks/secure-processor
+   SECURE_PROCESSOR_RETURN_URL = https://www.nerbixa.com/payment/success
    WEBHOOK_SECRET = [from Clerk Dashboard]
    ```
 
@@ -182,7 +182,7 @@ All documentation included in push:
    - Testing checklist
    - Troubleshooting matrix
 
-2. **`SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md`**
+2. **`SECURE_PROCESSOR_WEBHOOK_FIX_SUMMARY.md`**
    - Detailed webhook fix explanation
    - Payload structure documentation
    - Before/after comparison

@@ -17,11 +17,11 @@ console.log('📋 CHECK 1: Environment Variables');
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
 const envVars = {
-  SECURE-PROCESSOR_RETURN_URL: process.env.SECURE-PROCESSOR_RETURN_URL,
-  SECURE-PROCESSOR_WEBHOOK_URL: process.env.SECURE-PROCESSOR_WEBHOOK_URL,
-  SECURE-PROCESSOR_SHOP_ID: process.env.SECURE-PROCESSOR_SHOP_ID,
-  SECURE-PROCESSOR_SECRET_KEY: process.env.SECURE-PROCESSOR_SECRET_KEY,
-  SECURE-PROCESSOR_TEST_MODE: process.env.SECURE-PROCESSOR_TEST_MODE,
+  SECURE_PROCESSOR_RETURN_URL: process.env.SECURE_PROCESSOR_RETURN_URL,
+  SECURE_PROCESSOR_WEBHOOK_URL: process.env.SECURE_PROCESSOR_WEBHOOK_URL,
+  SECURE_PROCESSOR_SHOP_ID: process.env.SECURE_PROCESSOR_SHOP_ID,
+  SECURE_PROCESSOR_SECRET_KEY: process.env.SECURE_PROCESSOR_SECRET_KEY,
+  SECURE_PROCESSOR_TEST_MODE: process.env.SECURE_PROCESSOR_TEST_MODE,
   NODE_ENV: process.env.NODE_ENV,
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 };
@@ -41,7 +41,7 @@ console.log('🎯 CHECK 2: Default Return URL Configuration');
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
 const defaultReturnUrl = 'https://zinvero.com/dashboard';
-const actualReturnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || defaultReturnUrl;
+const actualReturnUrl = process.env.SECURE_PROCESSOR_RETURN_URL || defaultReturnUrl;
 
 console.log(`   Default: ${defaultReturnUrl}`);
 console.log(`   Actual:  ${actualReturnUrl}`);
@@ -49,7 +49,7 @@ console.log(`   Actual:  ${actualReturnUrl}`);
 if (actualReturnUrl.includes('/payment/success')) {
   console.log('   ⚠️  WARNING: Return URL still points to /payment/success!');
   console.log('   This will cause 404 errors.');
-  console.log('   Set SECURE-PROCESSOR_RETURN_URL to: https://www.zinvero.com/dashboard');
+  console.log('   Set SECURE_PROCESSOR_RETURN_URL to: https://www.zinvero.com/dashboard');
 } else if (actualReturnUrl.includes('/payment/callback')) {
   console.log('   ⚠️  WARNING: Return URL points to /payment/callback');
   console.log('   Consider using /dashboard directly for better UX.');
@@ -241,12 +241,12 @@ console.log('');
 
 const recommendations: string[] = [];
 
-if (!process.env.SECURE-PROCESSOR_RETURN_URL) {
-  recommendations.push('Set SECURE-PROCESSOR_RETURN_URL environment variable in Vercel');
+if (!process.env.SECURE_PROCESSOR_RETURN_URL) {
+  recommendations.push('Set SECURE_PROCESSOR_RETURN_URL environment variable in Vercel');
 }
 
 if (actualReturnUrl.includes('/payment/success')) {
-  recommendations.push('Update SECURE-PROCESSOR_RETURN_URL to point to /dashboard');
+  recommendations.push('Update SECURE_PROCESSOR_RETURN_URL to point to /dashboard');
 }
 
 if (!dashboardPageExists) {
@@ -278,7 +278,7 @@ if (recommendations.length > 0) {
 
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log('Run with environment variables:');
-console.log('   SECURE-PROCESSOR_RETURN_URL=https://www.zinvero.com/dashboard \\');
+console.log('   SECURE_PROCESSOR_RETURN_URL=https://www.zinvero.com/dashboard \\');
 console.log('   npx tsx scripts/diagnose-payment-redirect.ts');
 console.log('');
 
