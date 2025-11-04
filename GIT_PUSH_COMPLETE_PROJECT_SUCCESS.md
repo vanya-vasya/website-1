@@ -42,7 +42,7 @@ git add -A
 3. `app/(landing)/(policies)/privacy-policy/page.tsx`
 4. `app/(landing)/(policies)/return-policy/page.tsx`
 5. `app/(landing)/(policies)/terms-and-conditions/page.tsx`
-6. `app/api/payment/networx/route.ts`
+6. `app/api/payment/secure-processor/route.ts`
 7. `app/layout.tsx`
 8. `components/landing/footer.tsx`
 9. `components/mobile-nav.tsx`
@@ -140,7 +140,7 @@ https://github.com/vanya-vasya/website-1/pull/new/complete-project-push-20251031
 ### Production Code Updates
 - **App Layout:** Updated metadata, icons, and OpenGraph tags
 - **Policy Pages:** Migrated domain references (4 pages)
-- **Payment Gateway:** Updated Networx URLs
+- **Payment Gateway:** Updated Secure-processor URLs
 - **Components:** Updated footer, mobile nav, receipt PDF
 - **Configuration:** Updated package.json and PWA manifest
 

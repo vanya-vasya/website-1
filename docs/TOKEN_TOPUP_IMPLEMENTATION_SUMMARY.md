@@ -169,7 +169,7 @@ nerbixa/
 │   └── actions/
 │       └── user.actions.ts                  [MODIFIED - Added createOrGetUser]
 │
-├── app/api/webhooks/networx/
+├── app/api/webhooks/secure-processor/
 │   └── route.ts                             [MODIFIED - Enhanced idempotency, receipt, email]
 │
 ├── constants/
@@ -202,7 +202,7 @@ nerbixa/
 ├── config/
 │   └── nodemailer.ts                        [EXISTS - Email configuration]
 │
-└── app/api/payment/networx/
+└── app/api/payment/secure-processor/
     └── route.ts                             [EXISTS - Payment API]
 ```
 
@@ -284,11 +284,11 @@ nerbixa/
 ### Environment Variables (Required)
 ```bash
 # NetworkX Pay
-NETWORX_SHOP_ID=your_shop_id
-NETWORX_SECRET_KEY=your_secret_key
-NETWORX_TEST_MODE=true
-NETWORX_RETURN_URL=https://nerbixa.com/dashboard
-NETWORX_WEBHOOK_URL=https://nerbixa.com/api/webhooks/networx
+SECURE-PROCESSOR_SHOP_ID=your_shop_id
+SECURE-PROCESSOR_SECRET_KEY=your_secret_key
+SECURE-PROCESSOR_TEST_MODE=true
+SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/dashboard
+SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 
 # Email (Titan)
 OUTBOX_EMAIL=noreply@nerbixa.com

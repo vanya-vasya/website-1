@@ -46,8 +46,8 @@ User → Pro Modal → Payment API → NetworkX → Webhook → Database → Ema
 - `WebhookEvent` table: Tracks webhook processing for idempotency
 
 #### 2. **API Routes**
-- `/api/payment/networx` - Creates payment checkout sessions
-- `/api/webhooks/networx` - Processes payment webhooks
+- `/api/payment/secure-processor` - Creates payment checkout sessions
+- `/api/webhooks/secure-processor` - Processes payment webhooks
 
 #### 3. **Services**
 - `lib/api-limit.ts` - Token balance management
@@ -140,11 +140,11 @@ Add to `.env`:
 
 ```bash
 # NetworkX Pay Configuration
-NETWORX_SHOP_ID=your_shop_id
-NETWORX_SECRET_KEY=your_secret_key
-NETWORX_TEST_MODE=true # Set to false for production
-NETWORX_RETURN_URL=https://nerbixa.com/dashboard
-NETWORX_WEBHOOK_URL=https://nerbixa.com/api/webhooks/networx
+SECURE-PROCESSOR_SHOP_ID=your_shop_id
+SECURE-PROCESSOR_SECRET_KEY=your_secret_key
+SECURE-PROCESSOR_TEST_MODE=true # Set to false for production
+SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/dashboard
+SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 
 # Email Configuration (Titan Email)
 OUTBOX_EMAIL=noreply@nerbixa.com
@@ -171,7 +171,7 @@ import { generatePdfReceipt } from '@/lib/receiptGeneration';
 
 1. Go to NetworkX Dashboard
 2. Navigate to Webhooks settings
-3. Add webhook URL: `https://nerbixa.com/api/webhooks/networx`
+3. Add webhook URL: `https://nerbixa.com/api/webhooks/secure-processor`
 4. Select events: `payment.successful`, `payment.failed`, `payment.refunded`
 5. Save and verify webhook secret
 
@@ -181,7 +181,7 @@ import { generatePdfReceipt } from '@/lib/receiptGeneration';
 
 ### Payment API
 
-**Endpoint:** `POST /api/payment/networx`
+**Endpoint:** `POST /api/payment/secure-processor`
 
 **Request Body:**
 ```json
@@ -200,7 +200,7 @@ import { generatePdfReceipt } from '@/lib/receiptGeneration';
 {
   "success": true,
   "token": "checkout_token_xyz",
-  "payment_url": "https://checkout.networxpay.com/...",
+  "payment_url": "https://checkout.secure-processorpay.com/...",
   "checkout_id": "checkout_token_xyz",
   "test_mode": true
 }
@@ -208,7 +208,7 @@ import { generatePdfReceipt } from '@/lib/receiptGeneration';
 
 ### Webhook API
 
-**Endpoint:** `POST /api/webhooks/networx`
+**Endpoint:** `POST /api/webhooks/secure-processor`
 
 **Request Body (from NetworkX):**
 ```json
@@ -309,7 +309,7 @@ npm test __tests__/integration/token-topup-idempotency.test.ts
 1. Send duplicate webhook using curl:
 
 ```bash
-curl -X POST https://nerbixa.com/api/webhooks/networx \
+curl -X POST https://nerbixa.com/api/webhooks/secure-processor \
   -H "Content-Type: application/json" \
   -d '{
     "tracking_id": "txn_test_123",
@@ -356,10 +356,10 @@ git push origin main
 3. **Verify Deployment:**
 ```bash
 # Check webhook endpoint is accessible
-curl https://nerbixa.com/api/webhooks/networx
+curl https://nerbixa.com/api/webhooks/secure-processor
 
 # Should return:
-# {"message":"Networx webhook endpoint is active","timestamp":"..."}
+# {"message":"Secure-processor webhook endpoint is active","timestamp":"..."}
 ```
 
 4. **Monitor Initial Transactions:**
@@ -397,7 +397,7 @@ Monitor these metrics:
 
 **Test:**
 ```bash
-curl -X GET https://nerbixa.com/api/webhooks/networx
+curl -X GET https://nerbixa.com/api/webhooks/secure-processor
 ```
 
 #### 2. Duplicate Token Credits
@@ -506,7 +506,7 @@ const handleBuyTokens = async (packageData: {
   price: number;
   currency: string;
 }) => {
-  const response = await fetch('/api/payment/networx', {
+  const response = await fetch('/api/payment/secure-processor', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

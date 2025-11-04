@@ -12,11 +12,11 @@ npx prisma migrate deploy
 Add to your `.env` file:
 ```bash
 # NetworkX Pay
-NETWORX_SHOP_ID=your_shop_id
-NETWORX_SECRET_KEY=your_secret_key
-NETWORX_TEST_MODE=true
-NETWORX_RETURN_URL=https://nerbixa.com/dashboard
-NETWORX_WEBHOOK_URL=https://nerbixa.com/api/webhooks/networx
+SECURE-PROCESSOR_SHOP_ID=your_shop_id
+SECURE-PROCESSOR_SECRET_KEY=your_secret_key
+SECURE-PROCESSOR_TEST_MODE=true
+SECURE-PROCESSOR_RETURN_URL=https://nerbixa.com/dashboard
+SECURE-PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 
 # Email (Titan)
 OUTBOX_EMAIL=noreply@nerbixa.com
@@ -26,7 +26,7 @@ INBOX_EMAIL=support@nerbixa.com
 
 ### Step 3: Configure NetworkX Webhooks
 1. Go to NetworkX Dashboard
-2. Add webhook URL: `https://nerbixa.com/api/webhooks/networx`
+2. Add webhook URL: `https://nerbixa.com/api/webhooks/secure-processor`
 3. Select events: `payment.successful`, `payment.failed`, `payment.refunded`
 4. Save webhook secret
 
@@ -75,7 +75,7 @@ npm test __tests__/integration/token-topup-idempotency.test.ts
 - `prisma/schema.prisma` - Fixed schema
 - `lib/api-limit.ts` - Enhanced with fallback
 - `lib/actions/user.actions.ts` - Added createOrGetUser
-- `app/api/webhooks/networx/route.ts` - Enhanced webhook handler
+- `app/api/webhooks/secure-processor/route.ts` - Enhanced webhook handler
 
 **Created:**
 - `prisma/migrations/20251024000001_fix_transaction_schema/migration.sql`
@@ -92,7 +92,7 @@ npm test __tests__/integration/token-topup-idempotency.test.ts
 - `components/pdf/receipt.tsx` ✅
 - `lib/receiptGeneration.tsx` ✅
 - `config/nodemailer.ts` ✅
-- `app/api/payment/networx/route.ts` ✅
+- `app/api/payment/secure-processor/route.ts` ✅
 
 ## 🎯 Core Features
 
@@ -138,8 +138,8 @@ npm test __tests__/integration/token-topup-idempotency.test.ts
 ### Webhook Not Receiving
 ```bash
 # Test endpoint
-curl https://nerbixa.com/api/webhooks/networx
-# Should return: {"message":"Networx webhook endpoint is active","timestamp":"..."}
+curl https://nerbixa.com/api/webhooks/secure-processor
+# Should return: {"message":"Secure-processor webhook endpoint is active","timestamp":"..."}
 ```
 
 ### Balance Not Updating

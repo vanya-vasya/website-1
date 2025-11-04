@@ -13,7 +13,7 @@ describe('Payment Success to Dashboard Redirect', () => {
   describe('NetworkX Return URL Configuration', () => {
     it('should configure return URL to point to /payment/success', () => {
       const expectedReturnUrl = 'https://zinvero.com/payment/success';
-      const defaultReturnUrl = process.env.NETWORX_RETURN_URL || expectedReturnUrl;
+      const defaultReturnUrl = process.env.SECURE-PROCESSOR_RETURN_URL || expectedReturnUrl;
       
       expect(defaultReturnUrl).toContain('/payment/success');
     });

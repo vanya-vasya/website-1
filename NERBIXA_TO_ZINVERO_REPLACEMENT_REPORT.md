@@ -231,7 +231,7 @@ Line 5:
 
 ### Scripts
 
-#### **`test-networx-webhook-manual.sh`**
+#### **`test-secure-processor-webhook-manual.sh`**
 **Lines:** 18, 36, 46  
 **Occurrences:** 3
 
@@ -241,12 +241,12 @@ Line 18:
 + "description": "Zinvero Generations Purchase (50 Tokens)",
 
 Line 36:
-- echo "URL: https://www.nerbixa.com/api/webhooks/networx"
-+ echo "URL: https://www.zinvero.com/api/webhooks/networx"
+- echo "URL: https://www.nerbixa.com/api/webhooks/secure-processor"
++ echo "URL: https://www.zinvero.com/api/webhooks/secure-processor"
 
 Line 46:
-- https://www.nerbixa.com/api/webhooks/networx)
-+ https://www.zinvero.com/api/webhooks/networx)
+- https://www.nerbixa.com/api/webhooks/secure-processor)
++ https://www.zinvero.com/api/webhooks/secure-processor)
 ```
 
 #### **`scripts/verify-webhook-production.ts`**
@@ -260,7 +260,7 @@ Line 46:
 #### **`__tests__/integration/payment-dashboard-redirect.integration.test.ts`**
 **Occurrences:** 21
 
-#### **`__tests__/integration/networx-webhook.integration.test.ts`**
+#### **`__tests__/integration/secure-processor-webhook.integration.test.ts`**
 **Occurrences:** 1
 
 #### **`__tests__/integration/navigation.test.ts`**
@@ -323,8 +323,8 @@ Line 46:
 
 ### Network Configuration
 
-- `NETWORX_WEBHOOK_FIX_SUMMARY.md` - **7 occurrences**
-- `NETWORX_ENV_SETUP.md` - **4 occurrences**
+- `SECURE-PROCESSOR_WEBHOOK_FIX_SUMMARY.md` - **7 occurrences**
+- `SECURE-PROCESSOR_ENV_SETUP.md` - **4 occurrences**
 
 ### Git and Deployment
 
@@ -475,7 +475,7 @@ After replacement, the following must be validated:
 
 ### External Services
 - [ ] Update Clerk webhook URLs
-- [ ] Update Networx webhook URLs
+- [ ] Update Secure-processor webhook URLs
 - [ ] Update payment gateway URLs
 - [ ] Update email service sender addresses
 
@@ -522,7 +522,7 @@ tar -czf backup-nerbixa-references-$(date +%Y%m%d-%H%M%S).tar.gz \
 
 ### Step 4: External Service Updates
 1. ✅ Update Clerk webhooks
-2. ✅ Update Networx webhooks
+2. ✅ Update Secure-processor webhooks
 3. ✅ Update DNS if needed
 4. ✅ Update email service
 

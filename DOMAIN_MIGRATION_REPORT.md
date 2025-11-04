@@ -61,11 +61,11 @@ This report documents the comprehensive migration from `nerbixa.com` to `zinvero
 |------|---------|---------|--------|
 | Payment History | `https://nerbixa.com/dashboard/billing/payment-history` | `https://www.zinvero.com/dashboard/billing/payment-history` | ✅ Updated |
 
-#### `app/api/payment/networx/route.ts` - Payment Gateway URLs ✅
+#### `app/api/payment/secure-processor/route.ts` - Payment Gateway URLs ✅
 | Variable | Old Default | New Default | Status |
 |----------|-------------|-------------|--------|
 | returnUrl | `https://nerbixa.com/payment/success` | `https://www.zinvero.com/payment/success` | ✅ Updated |
-| notificationUrl | `https://nerbixa.com/api/webhooks/networx` | `https://www.zinvero.com/api/webhooks/networx` | ✅ Updated |
+| notificationUrl | `https://nerbixa.com/api/webhooks/secure-processor` | `https://www.zinvero.com/api/webhooks/secure-processor` | ✅ Updated |
 
 ### 1.2 Configuration Files ✅
 
@@ -150,7 +150,7 @@ This report documents the comprehensive migration from `nerbixa.com` to `zinvero
 **Status:** ⚠️ Not Yet Updated  
 **Impact:** Low (development/diagnostic tools only)  
 **Files:**
-- `test-networx-webhook-manual.sh` (2 occurrences)
+- `test-secure-processor-webhook-manual.sh` (2 occurrences)
 - `scripts/verify-webhook-production.ts` (3 occurrences)
 - `scripts/diagnose-payment-redirect.ts` (3 occurrences)
 
@@ -165,7 +165,7 @@ This report documents the comprehensive migration from `nerbixa.com` to `zinvero
 **Categories:**
 1. **Deployment Documentation** (DEPLOYMENT_*, GIT_*, FINAL_*, RELEASE_*)
 2. **Webhook Documentation** (WEBHOOK_*, CLERK_*, FIX_*)
-3. **Payment Documentation** (PAYMENT_*, NETWORX_*)
+3. **Payment Documentation** (PAYMENT_*, SECURE-PROCESSOR_*)
 4. **Diagnostic Reports** (DIAGNOSTIC_*, INVESTIGATION_*)
 5. **Setup Guides** (QUICK_START_*, VERCEL_*, check-webhook-logs.md)
 6. **Implementation Docs** (docs/TOKEN_TOPUP_*, IMPLEMENTATION_*, NAVIGATION_*)
@@ -234,8 +234,8 @@ server {
 
 | Variable | Old Value | New Value | Priority |
 |----------|-----------|-----------|----------|
-| `NETWORX_RETURN_URL` | `https://nerbixa.com/payment/success` | `https://www.zinvero.com/payment/success` | 🔴 Critical |
-| `NETWORX_WEBHOOK_URL` | `https://nerbixa.com/api/webhooks/networx` | `https://www.zinvero.com/api/webhooks/networx` | 🔴 Critical |
+| `SECURE-PROCESSOR_RETURN_URL` | `https://nerbixa.com/payment/success` | `https://www.zinvero.com/payment/success` | 🔴 Critical |
+| `SECURE-PROCESSOR_WEBHOOK_URL` | `https://nerbixa.com/api/webhooks/secure-processor` | `https://www.zinvero.com/api/webhooks/secure-processor` | 🔴 Critical |
 | `OUTBOX_EMAIL` | `noreply@nerbixa.com` | `noreply@zinvero.com` | 🟡 Important |
 | `INBOX_EMAIL` | `support@nerbixa.com` | `support@zinvero.com` | 🟡 Important |
 
@@ -254,7 +254,7 @@ server {
 **Action Required:** Update webhook/return URLs in NetworkX Dashboard
 
 1. Login to NetworkX Dashboard
-2. Update webhook URL: `https://www.zinvero.com/api/webhooks/networx`
+2. Update webhook URL: `https://www.zinvero.com/api/webhooks/secure-processor`
 3. Update return URL: `https://www.zinvero.com/payment/success`
 4. Test with a payment transaction
 
@@ -324,8 +324,8 @@ server {
 
 ### Deployment Steps 🔲
 - [ ] Update environment variables in Vercel
-  - [ ] NETWORX_RETURN_URL
-  - [ ] NETWORX_WEBHOOK_URL  
+  - [ ] SECURE-PROCESSOR_RETURN_URL
+  - [ ] SECURE-PROCESSOR_WEBHOOK_URL  
   - [ ] OUTBOX_EMAIL
   - [ ] INBOX_EMAIL
 - [ ] Update Clerk webhook endpoint
@@ -394,7 +394,7 @@ curl https://www.zinvero.com/api/webhooks/clerk
 # Should return: 400 (method not allowed, but endpoint exists)
 
 # Test NetworkX webhook
-curl https://www.zinvero.com/api/webhooks/networx  
+curl https://www.zinvero.com/api/webhooks/secure-processor  
 # Should return: 405 (method not allowed, but endpoint exists)
 ```
 
@@ -465,7 +465,7 @@ https://nerbixa.com/dashboard → https://www.zinvero.com/dashboard
 
 API Endpoints:
 https://www.nerbixa.com/api/webhooks/clerk → https://www.zinvero.com/api/webhooks/clerk
-https://www.nerbixa.com/api/webhooks/networx → https://www.zinvero.com/api/webhooks/networx
+https://www.nerbixa.com/api/webhooks/secure-processor → https://www.zinvero.com/api/webhooks/secure-processor
 
 Payment:
 https://nerbixa.com/payment/success → https://www.zinvero.com/payment/success
