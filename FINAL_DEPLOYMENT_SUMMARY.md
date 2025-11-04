@@ -366,8 +366,8 @@ npm test -- --watch
 ## 📞 Поддержка
 
 **Secure-processor Support:**
-- Email: support@secure-processorpay.com
-- Dashboard: https://dashboard.secure-processorpay.com
+- Email: support@networxpay.com
+- Dashboard: https://dashboard.networxpay.com
 
 **Vercel Support:**
 - Dashboard: https://vercel.com/support

@@ -10,7 +10,7 @@ For production deployment on Vercel, add these environment variables to your Ver
 ```
 SECURE_PROCESSOR_SHOP_ID=29959
 SECURE_PROCESSOR_SECRET_KEY=dbfb6f4e977f49880a6ce3c939f1e7be645a5bb2596c04d9a3a7b32d52378950
-SECURE_PROCESSOR_API_URL=https://gateway.secure-processorpay.com
+SECURE_PROCESSOR_API_URL=https://gateway.networxpay.com
 SECURE_PROCESSOR_TEST_MODE=false
 SECURE_PROCESSOR_RETURN_URL=https://nerbixa.com/payment/success
 SECURE_PROCESSOR_CANCEL_URL=https://nerbixa.com/payment/cancel
@@ -21,7 +21,7 @@ SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 ```
 NEXT_PUBLIC_SECURE_PROCESSOR_SHOP_ID=29959
 NEXT_PUBLIC_SECURE_PROCESSOR_TEST_MODE=false
-NEXT_PUBLIC_SECURE_PROCESSOR_WIDGET_URL=https://checkout.secure-processorpay.com
+NEXT_PUBLIC_SECURE_PROCESSOR_WIDGET_URL=https://checkout.networxpay.com
 ```
 
 ## How to Add Environment Variables to Vercel

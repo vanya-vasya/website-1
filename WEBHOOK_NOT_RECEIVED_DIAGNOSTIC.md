@@ -96,7 +96,7 @@ Secure-processor требует HTTPS с валидным сертификато
 
 **Проверка в Secure-processor Dashboard:**
 
-1. Зайдите в: https://backoffice.secure-processorpay.com/
+1. Зайдите в: https://backoffice.networxpay.com/
 2. Найдите транзакцию (последние 10 минут)
 3. Кликните на транзакцию → View Details
 4. Проверьте поле **"Notification URL"**
@@ -343,7 +343,7 @@ Check: "Webhook Status" (Delivered/Failed/Pending)
 
 ## 📚 **ПОЛЕЗНЫЕ ССЫЛКИ**
 
-- **Secure-processor Dashboard:** https://backoffice.secure-processorpay.com/
+- **Secure-processor Dashboard:** https://backoffice.networxpay.com/
 - **Vercel Logs:** Vercel Dashboard → Your Project → Deployments → Latest → Runtime Logs
 - **Test Webhook Script:** `./test-secure-processor-webhook-manual.sh`
 
