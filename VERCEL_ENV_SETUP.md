@@ -10,7 +10,7 @@
 
 ### Вариант A: Реальные учетные данные (Production)
 
-1. Войдите в [Secure-processor Dashboard](https://dashboard.networxpay.com)
+1. Войдите в [Secure-processor Dashboard](https://dashboard.secure-processor.com)
 2. Перейдите в **Settings → API Credentials**
 3. Скопируйте:
    - **Shop ID** (например: `29959`)
@@ -19,7 +19,7 @@
 ### Вариант B: Тестовые учетные данные (для разработки)
 
 Если у вас нет реальных учетных данных, запросите тестовые:
-- Email: support@networxpay.com
+- Email: support@secure-processor.com
 - Тема: "Request Test API Credentials"
 
 ---
@@ -228,8 +228,8 @@ SECURE_PROCESSOR_WEBHOOK_URL=https://nerbixa.com/api/webhooks/secure-processor
 ## Контакты для поддержки
 
 **Secure-processor Support:**
-- Email: support@networxpay.com
-- Dashboard: https://dashboard.networxpay.com
+- Email: support@secure-processor.com
+- Dashboard: https://dashboard.secure-processor.com
 
 **Vercel Support:**
 - Dashboard: https://vercel.com/support

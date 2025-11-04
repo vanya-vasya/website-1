@@ -28,7 +28,7 @@ SECURE_PROCESSOR_WEBHOOK_URL=https://your-domain.vercel.app/api/webhooks/secure-
 ```
 
 ### 3. API Endpoint
-**Текущий:** `https://checkout.networxpay.com/ctp/api/checkouts`
+**Текущий:** `https://checkout.secure-processor.com/ctp/api/checkouts`
 **Возможная проблема:** Возможно нужен другой endpoint для вашего аккаунта.
 
 ### 4. IP Whitelist
@@ -59,7 +59,7 @@ const testMode = true; // Временно для тестирования
 ## Рекомендуемые шаги
 
 ### Шаг 1: Проверить Secure-processor Dashboard
-1. Войдите в https://dashboard.networxpay.com
+1. Войдите в https://dashboard.secure-processor.com
 2. Проверьте Shop Settings → API Credentials
 3. Убедитесь, что аккаунт активирован
 4. Проверьте, что API доступ включен
@@ -79,7 +79,7 @@ Secure-processor использует HTTP Basic Auth. Проверьте, чт�
 
 ### Шаг 4: Связаться с Secure-processor Support
 Если проблема не решается:
-- Email: support@networxpay.com
+- Email: support@secure-processor.com
 - Сообщите: "Access denied при создании checkout через API"
 - Предоставьте: Shop ID, API endpoint, timestamp запроса
 

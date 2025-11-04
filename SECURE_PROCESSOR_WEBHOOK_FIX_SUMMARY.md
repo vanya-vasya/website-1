@@ -197,7 +197,7 @@ await client.query(
       "exp_month": 12,
       "exp_year": 2031
     },
-    "receipt_url": "https://backoffice.networxpay.com/customer/transactions/..."
+    "receipt_url": "https://backoffice.secure-processor.com/customer/transactions/..."
   }
 }
 ```
