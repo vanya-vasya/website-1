@@ -32,13 +32,13 @@ Environment: ✅ Production ✅ Preview ✅ Development
 ### Где взять эти данные?
 
 **Вариант A: У вас есть реальный Secure-processor аккаунт**
-1. Откройте https://dashboard.secure-processorpay.com
+1. Откройте https://dashboard.networxpay.com
 2. Settings → API Credentials
 3. Скопируйте Shop ID и Secret Key
 
 **Вариант B: Используйте тестовые данные**
 - Если нет аккаунта, напишите в Secure-processor Support
-- Email: support@secure-processorpay.com
+- Email: support@networxpay.com
 - Запросите тестовые credentials
 
 **Вариант C: Временно протестировать без реальных платежей**
