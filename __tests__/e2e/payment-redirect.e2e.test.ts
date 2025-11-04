@@ -96,8 +96,8 @@ describe('E2E: Payment to Dashboard Redirect Flow', () => {
     console.log('🔍 Step 3: Verifying return URL configuration...');
     
     const fetchCall = (global.fetch as jest.Mock).mock.calls[0];
-    const secure-processorRequestBody = JSON.parse(fetchCall[1].body);
-    const returnUrl = secure-processorRequestBody.checkout.settings.return_url;
+    const secureProcessorRequestBody = JSON.parse(fetchCall[1].body);
+    const returnUrl = secureProcessorRequestBody.checkout.settings.return_url;
 
     console.log('   Return URL:', returnUrl);
     console.log('');

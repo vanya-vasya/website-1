@@ -134,11 +134,11 @@ export async function POST(request: NextRequest) {
     });
     
     // Make API call to Secure-processor Pay
-    const secure-processorApiUrl = `${apiUrl}/ctp/api/checkouts`;  // Correct endpoint for hosted payment page
-    console.log('Making request to:', secure-processorApiUrl);
+    const secureProcessorApiUrl = `${apiUrl}/ctp/api/checkouts`;  // Correct endpoint for hosted payment page
+    console.log('Making request to:', secureProcessorApiUrl);
 
     try {
-      const secure-processorResponse = await fetch(secure-processorApiUrl, {
+      const secureProcessorResponse = await fetch(secureProcessorApiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -149,11 +149,11 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify(requestData),
       });
 
-      if (!secure-processorResponse.ok) {
-        const errorData = await secure-processorResponse.text();
+      if (!secureProcessorResponse.ok) {
+        const errorData = await secureProcessorResponse.text();
         console.error('❌ Secure-processor API Error Response:', errorData);
-        console.error('Response Status:', secure-processorResponse.status);
-        console.error('Response Headers:', Object.fromEntries(secure-processorResponse.headers.entries()));
+        console.error('Response Status:', secureProcessorResponse.status);
+        console.error('Response Headers:', Object.fromEntries(secureProcessorResponse.headers.entries()));
         
         // Try to parse error as JSON for better error messages
         let errorDetails = errorData;
@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(
           { 
             error: 'Failed to create payment checkout',
-            details: `API returned ${secure-processorResponse.status}`,
+            details: `API returned ${secureProcessorResponse.status}`,
             message: 'Unable to initialize payment. Please try again or contact support.',
             errorData: errorDetails
           },
@@ -199,34 +199,34 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      const secure-processorResult = await secure-processorResponse.json();
+      const secureProcessorResult = await secureProcessorResponse.json();
       console.log('✅ Secure-processor API Success Response received');
       console.log('Checkout created:', {
-        hasToken: !!secure-processorResult.checkout?.token,
-        hasRedirectUrl: !!secure-processorResult.checkout?.redirect_url,
-        testMode: secure-processorResult.checkout?.test
+        hasToken: !!secureProcessorResult.checkout?.token,
+        hasRedirectUrl: !!secureProcessorResult.checkout?.redirect_url,
+        testMode: secureProcessorResult.checkout?.test
       });
 
       // Проверяем успешность ответа от Secure-processor hosted payment page
-      if (secure-processorResult.checkout && secure-processorResult.checkout.token && secure-processorResult.checkout.redirect_url) {
+      if (secureProcessorResult.checkout && secureProcessorResult.checkout.token && secureProcessorResult.checkout.redirect_url) {
         console.log('✅ Payment checkout created successfully');
-        console.log('Token:', secure-processorResult.checkout.token);
-        console.log('Redirect URL:', secure-processorResult.checkout.redirect_url);
+        console.log('Token:', secureProcessorResult.checkout.token);
+        console.log('Redirect URL:', secureProcessorResult.checkout.redirect_url);
         
         return NextResponse.json({
           success: true,
-          token: secure-processorResult.checkout.token,
-          payment_url: secure-processorResult.checkout.redirect_url,
-          checkout_id: secure-processorResult.checkout.token, // Используем token как идентификатор
+          token: secureProcessorResult.checkout.token,
+          payment_url: secureProcessorResult.checkout.redirect_url,
+          checkout_id: secureProcessorResult.checkout.token, // Используем token как идентификатор
           test_mode: useTestMode
         });
       } else {
-        console.error('❌ Secure-processor API returned unexpected response format:', secure-processorResult);
+        console.error('❌ Secure-processor API returned unexpected response format:', secureProcessorResult);
         return NextResponse.json(
           { 
             error: 'Payment checkout creation failed',
             message: 'Payment processor returned invalid response',
-            details: secure-processorResult.error || secure-processorResult.message || 'Invalid response format'
+            details: secureProcessorResult.error || secureProcessorResult.message || 'Invalid response format'
           },
           { status: 400 }
         );
@@ -274,7 +274,7 @@ export async function GET(request: NextRequest) {
     const apiUrl = 'https://checkout.secure-processorpay.com'; // HPP API URL
 
     // Send request to Secure-processor HPP API for status check
-    const secure-processorResponse = await fetch(`${apiUrl}/ctp/api/checkouts/${token}`, {
+    const secureProcessorResponse = await fetch(`${apiUrl}/ctp/api/checkouts/${token}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -283,20 +283,20 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    const secure-processorResult = await secure-processorResponse.json();
+    const secureProcessorResult = await secureProcessorResponse.json();
 
-    if (!secure-processorResponse.ok) {
-      console.error('Secure-processor HPP Status API Error:', secure-processorResult);
+    if (!secureProcessorResponse.ok) {
+      console.error('Secure-processor HPP Status API Error:', secureProcessorResult);
       return NextResponse.json(
-        { error: 'Failed to check payment status', details: secure-processorResult },
+        { error: 'Failed to check payment status', details: secureProcessorResult },
         { status: 400 }
       );
     }
 
     return NextResponse.json({
       success: true,
-      status: secure-processorResult.status,
-      transaction: secure-processorResult,
+      status: secureProcessorResult.status,
+      transaction: secureProcessorResult,
     });
 
   } catch (error) {
