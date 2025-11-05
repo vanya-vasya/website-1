@@ -94,7 +94,7 @@ export async function POST(req: Request) {
       });
     }
 
-    const validResolutions = ["1024x1024", "1536x1024", "1024x1536"];
+    const validResolutions = ["1024x1024", "1792x1024", "1024x1792"];
     if (!validResolutions.includes(resolution)) {
       return new NextResponse("Invalid resolution", { status: 400 });
     }
@@ -120,7 +120,7 @@ export async function POST(req: Request) {
         return await openai.images.generate({
           prompt: cleanPrompt,
           n: numImages,
-          size: resolution as "1024x1024" | "1536x1024" | "1024x1536",
+          size: resolution as "1024x1024" | "1792x1024" | "1024x1792",
           model: model,
         });
       },
