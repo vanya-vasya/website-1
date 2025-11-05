@@ -6,7 +6,7 @@ import { OpenAI } from "openai";
 import { incrementApiLimit, checkApiLimit } from "@/lib/api-limit";
 import { MODEL_GENERATIONS_PRICE } from "@/constants";
 
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 export async function POST(req: Request) {
   try {

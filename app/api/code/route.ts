@@ -11,7 +11,7 @@ const instructionMessage = {
     "You are a code generator. You must answer only in markdown code snippets. Use code comments for explanations.",
 };
 
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 export async function POST(req: Request) {
   try {
