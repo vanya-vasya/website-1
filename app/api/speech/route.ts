@@ -21,8 +21,20 @@ export async function POST(req: Request) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!prompt) {
-      return new NextResponse("Prompt is required", { status: 400 });
+    if (!prompt || typeof prompt !== "string") {
+      return new NextResponse("Valid text prompt is required", { status: 400 });
+    }
+
+    // Sanitize and validate input
+    const cleanText = prompt.trim();
+    if (cleanText.length === 0) {
+      return new NextResponse("Prompt cannot be empty", { status: 400 });
+    }
+
+    if (cleanText.length > 5000) {
+      return new NextResponse("Prompt is too long (max 5000 characters)", {
+        status: 400,
+      });
     }
 
     const apiGenerations = await checkApiLimit(
@@ -35,20 +47,46 @@ export async function POST(req: Request) {
         { status: 403 }
       );
     }
+
+    console.log("[SPEECH] Generating speech for text length:", cleanText.length);
+
+    // Use a more stable TTS model with better error handling
     const response = await replicate.run(
-      "adirik/styletts2:989cb5ea6d2401314eb30685740cb9f6fd1c9001b8940659b406f952837ab5ac",
+      "suno-ai/bark:b76242b40d67c76ab6742e987628a2a9ac019e11d56ab96c4e91ce03b79b2787",
       {
         input: {
-          text: prompt,
+          prompt: cleanText,
+          text_temp: 0.7,
+          waveform_temp: 0.7,
+          output_full: false,
         },
       }
     );
+
+    console.log("[SPEECH] Speech generation successful");
 
     await incrementApiLimit(MODEL_GENERATIONS_PRICE.speecGeneration);
 
     return NextResponse.json(response);
   } catch (error) {
-    console.log("[SPEECH_ERROR]", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    console.error("[SPEECH_ERROR]", error);
+    
+    // Provide more detailed error information
+    if (error instanceof Error) {
+      console.error("[SPEECH_ERROR] Message:", error.message);
+      console.error("[SPEECH_ERROR] Stack:", error.stack);
+
+      // Check for specific Replicate errors
+      if (error.message.includes("Prediction failed")) {
+        return new NextResponse(
+          "Speech generation failed. Please try again with different text.",
+          { status: 500 }
+        );
+      }
+    }
+
+    return new NextResponse("Speech generation error. Please try again.", {
+      status: 500,
+    });
   }
 }
