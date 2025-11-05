@@ -24,14 +24,14 @@ export async function GET(request: NextRequest) {
       [userId]
     );
 
-    if (userResult.length === 0) {
+    if (userResult.rows.length === 0) {
       return NextResponse.json(
         { error: 'User not found', balanceUpdated: false },
         { status: 404 }
       );
     }
 
-    const user = userResult[0];
+    const user = userResult.rows[0];
     const currentBalance = user.availableGenerations;
 
     // If transactionId is provided, check if transaction exists
@@ -41,8 +41,8 @@ export async function GET(request: NextRequest) {
         [userId, transactionId, 'successful']
       );
 
-      if (transactionResult.length > 0) {
-        const transaction = transactionResult[0];
+      if (transactionResult.rows.length > 0) {
+        const transaction = transactionResult.rows[0];
         return NextResponse.json({
           success: true,
           balanceUpdated: true,
