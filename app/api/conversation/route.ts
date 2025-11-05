@@ -11,8 +11,8 @@ export const maxDuration = 300;
 // Retry helper with exponential backoff
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
-  maxRetries = 3,
-  baseDelay = 1000
+  maxRetries = 5,
+  baseDelay = 1500
 ): Promise<T> {
   let lastError: Error | undefined;
 
@@ -29,15 +29,24 @@ async function retryWithBackoff<T>(
 
       // Don't retry on last attempt
       if (attempt === maxRetries - 1) {
+        console.error(
+          `[CONVERSATION] All ${maxRetries} retry attempts failed. Last error:`,
+          error?.status,
+          error?.request_id
+        );
         break;
       }
 
-      // Exponential backoff: 1s, 2s, 4s
+      // Exponential backoff with jitter: 1.5s, 3s, 6s, 12s
       const delay = baseDelay * Math.pow(2, attempt);
+      // Add random jitter (±20%) to prevent thundering herd
+      const jitter = delay * 0.2 * (Math.random() - 0.5);
+      const finalDelay = Math.round(delay + jitter);
+
       console.log(
-        `[CONVERSATION] Retry attempt ${attempt + 1}/${maxRetries} after ${delay}ms`
+        `[CONVERSATION] Retry attempt ${attempt + 1}/${maxRetries} after ${finalDelay}ms (OpenAI server error)`
       );
-      await new Promise((resolve) => setTimeout(resolve, delay));
+      await new Promise((resolve) => setTimeout(resolve, finalDelay));
     }
   }
 
@@ -143,15 +152,30 @@ export async function POST(req: Request) {
 
     if (error?.status === 500 || error?.status === 503) {
       return new NextResponse(
-        "OpenAI service is temporarily unavailable. Please try again in a moment.",
-        { status: 503 }
+        JSON.stringify({
+          error:
+            "OpenAI is experiencing temporary server issues. Your credits were NOT charged. Please try again in a few moments.",
+          details: "We attempted multiple retries but the service is currently unavailable.",
+          requestId: error?.request_id,
+        }),
+        {
+          status: 503,
+          headers: { "Content-Type": "application/json" },
+        }
       );
     }
 
     // Generic error
     return new NextResponse(
-      "Failed to process conversation. Please try again.",
-      { status: 500 }
+      JSON.stringify({
+        error:
+          "Failed to process conversation. Your credits were NOT charged. Please try again.",
+        details: error?.message || "Unknown error occurred",
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
     );
   }
 }
