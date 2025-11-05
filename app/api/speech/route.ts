@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { prompt } = body;
+    const { prompt, duration } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -37,6 +37,10 @@ export async function POST(req: Request) {
       });
     }
 
+    // Validate duration
+    const validDurations = ["5", "10", "20", "30", "60"];
+    const speechDuration = duration && validDurations.includes(duration) ? parseInt(duration) : 5;
+
     const apiGenerations = await checkApiLimit(
       MODEL_GENERATIONS_PRICE.speecGeneration
     );
@@ -48,7 +52,7 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log("[SPEECH] Generating speech for text length:", cleanText.length);
+    console.log("[SPEECH] Generating speech for text length:", cleanText.length, "Duration:", speechDuration);
 
     // Use a more stable TTS model with better error handling
     const response = await replicate.run(
