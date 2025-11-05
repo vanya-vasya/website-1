@@ -1,4 +1,5 @@
-import { Pool, PoolClient, QueryResult, QueryResultRow } from 'pg';
+import { neonConfig, Pool, PoolClient, QueryResult, QueryResultRow } from '@neondatabase/serverless';
+import ws from 'ws';
 
 interface Database {
   query<T extends QueryResultRow = any>(
@@ -9,19 +10,16 @@ interface Database {
   end(): Promise<void>;
 }
 
-// Create connection pool with increased timeouts for Neon serverless
+// Configure Neon for serverless environment
+neonConfig.webSocketConstructor = ws;
+neonConfig.useSecureWebSocket = true;
+
+// Create connection pool optimized for Vercel serverless
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  },
-  max: 20, // Maximum pool size
-  idleTimeoutMillis: 30000, // 30 seconds idle timeout
-  connectionTimeoutMillis: 30000, // 30 seconds connection timeout (increased from 10s)
-  query_timeout: 60000, // 60 seconds query timeout
-  statement_timeout: 60000, // 60 seconds statement timeout
-  keepAlive: true, // Keep connections alive
-  keepAliveInitialDelayMillis: 10000, // Initial delay for keep-alive
+  max: 1, // CRITICAL: Only 1 connection per serverless function instance
+  idleTimeoutMillis: 10000, // 10 seconds - quick cleanup for serverless
+  connectionTimeoutMillis: 10000, // 10 seconds - fast fail for cold starts
 });
 
 // Helper function to generate CUID-like IDs
@@ -84,18 +82,20 @@ const db: Database & {
   },
 };
 
-// Test connection on startup
-pool.connect()
-  .then(client => {
-    console.log('[DB] PostgreSQL connection established');
-    client.release();
-  })
-  .catch(error => {
-    console.error('[DB] PostgreSQL connection failed:', error);
-  });
+// Test connection on startup (only in development with DATABASE_URL set)
+if (process.env.NODE_ENV === 'development' && process.env.DATABASE_URL) {
+  pool.connect()
+    .then(client => {
+      console.log('[DB] PostgreSQL connection established');
+      client.release();
+    })
+    .catch(error => {
+      console.error('[DB] PostgreSQL connection failed:', error);
+    });
+}
 
 // Handle pool errors
-pool.on('error', (err) => {
+pool.on('error', (err: Error) => {
   console.error('[DB] Unexpected pool error:', err);
 });
 

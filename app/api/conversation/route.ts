@@ -6,16 +6,14 @@ import { OpenAI } from "openai";
 import { incrementApiLimit, checkApiLimit } from "@/lib/api-limit";
 import { MODEL_GENERATIONS_PRICE } from "@/constants";
 
-const configuration = {
-  apiKey: process.env.OPENAI_API_KEY,
-};
-
-const openai = new OpenAI(configuration);
-
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
   try {
+    // Lazy initialization of OpenAI client
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
     const { userId } = auth();
     console.log("[CONVERSATION] User ID:", userId);
 
@@ -27,7 +25,7 @@ export async function POST(req: Request) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    if (!configuration.apiKey) {
+    if (!process.env.OPENAI_API_KEY) {
       console.error("[CONVERSATION] OpenAI API key not configured");
       return new NextResponse("OpenAI API Key not configured.", {
         status: 500,
