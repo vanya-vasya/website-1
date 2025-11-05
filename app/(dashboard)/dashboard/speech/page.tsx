@@ -22,7 +22,7 @@ import { Loader } from "@/components/loader";
 import { Empty } from "@/components/ui/empty";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { FeatureContainer } from "@/components/feature-container";
-import { inputStyles, buttonStyles, contentStyles, loadingStyles, cardStyles } from "@/components/ui/feature-styles";
+import { inputStyles, buttonStyles, contentStyles, loadingStyles } from "@/components/ui/feature-styles";
 import { cn } from "@/lib/utils";
 
 import { duration, formSchema } from "./constants";
@@ -180,16 +180,9 @@ const SpeechPage = () => {
           )}
           <div className="space-y-4">
             {speechList.map((speech, index) => (
-              <div
-                key={index}
-                className={cn(cardStyles.base, "p-4")}
-              >
-                <p className="mb-2 font-semibold">Audio {index + 1}</p>
-                <audio controls className="w-full">
-                  <source src={speech} />
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
+              <audio key={index} controls className="w-full">
+                <source src={speech} />
+              </audio>
             ))}
           </div>
         </div>
