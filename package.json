@@ -86,7 +86,6 @@
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "typewriter-effect": "^2.21.0",
-    "ws": "^8.18.3",
     "zod": "^3.22.4",
     "zustand": "^4.5.0"
   },
@@ -100,7 +99,6 @@
     "@types/pg": "^8.15.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/ws": "^8.18.1",
     "autoprefixer": "^10.0.1",
     "dotenv": "^16.3.1",
     "eslint": "^8",
