@@ -86,7 +86,7 @@ export async function GET(req: Request) {
   let userCount = 0;
   try {
     const result = await db.query('SELECT COUNT(*) as count FROM "User"');
-    userCount = parseInt(result.rows[0].count);
+    userCount = parseInt(result[0].count);
   } catch (error) {
     log.error('Failed to get user count', error);
   }
@@ -287,7 +287,7 @@ export async function POST(req: Request) {
           [svixEventId]
         );
         
-        if (existingEventResult.rows.length > 0 && existingEventResult.rows[0].processed) {
+        if (existingEventResult.length > 0 && existingEventResult[0].processed) {
           log.warn(`[${requestId}] ⚠️ Webhook already processed (idempotent)`, {
             eventId: svixEventId
           });
@@ -299,7 +299,7 @@ export async function POST(req: Request) {
           
           return NextResponse.json({
             message: "Already processed",
-            user: existingUserResult.rows[0],
+            user: existingUserResult[0],
             idempotent: true,
             requestId
           });
@@ -328,7 +328,7 @@ export async function POST(req: Request) {
              RETURNING *`,
             [userId, id, email, first_name, last_name, image_url]
           );
-          const newUser = userResult.rows[0];
+          const newUser = userResult[0];
           log.info(`[${requestId}]   ✓ User created`, {
             userId: newUser.id,
             email: newUser.email,
@@ -344,7 +344,7 @@ export async function POST(req: Request) {
              RETURNING *`,
             [transactionId, id, newUser.id, svixEventId]
           );
-          const transaction = transactionResult.rows[0];
+          const transaction = transactionResult[0];
           log.info(`[${requestId}]   ✓ Transaction created`, {
             transactionId: transaction.id,
             amount: transaction.amount

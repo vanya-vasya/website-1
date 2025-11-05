@@ -50,18 +50,18 @@ export const checkApiLimit = async (generationPrice: number) => {
       return false;
     }
 
-    const result = await db.query(
+    const users = await db.query(
       'SELECT "usedGenerations", "availableGenerations" FROM "User" WHERE "clerkId" = $1',
       [userId]
     );
-    console.log("[checkApiLimit] Query result rows:", result.rows.length);
+    console.log("[checkApiLimit] Query result rows:", users.rows.length);
 
-    if (result.rows.length === 0) {
+    if (users.rows.length === 0) {
       console.error("[checkApiLimit] User not found in database:", userId);
       return false;
     }
 
-    const user = result.rows[0];
+    const user = users.rows[0];
     const remainingGenerations = user.availableGenerations - user.usedGenerations;
     console.log("[checkApiLimit] User stats:", {
       available: user.availableGenerations,

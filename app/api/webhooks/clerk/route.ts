@@ -83,7 +83,7 @@ export async function POST(req: Request) {
         [svixEventId]
       );
 
-      if (existingEventResult.rows.length > 0 && existingEventResult.rows[0].processed) {
+      if (existingEventResult.length > 0 && existingEventResult[0].processed) {
         console.log(`Webhook event ${svixEventId} already processed, skipping...`);
         const existingUserResult = await db.query(
           'SELECT * FROM "User" WHERE "clerkId" = $1',
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
         );
         return NextResponse.json({ 
           message: "Already processed", 
-          user: existingUserResult.rows[0],
+          user: existingUserResult[0],
           idempotent: true 
         });
       }
@@ -121,7 +121,7 @@ export async function POST(req: Request) {
            RETURNING *`,
           [userId, id, userEmail, first_name, last_name, image_url]
         );
-        const newUser = userResult.rows[0];
+        const newUser = userResult[0];
         console.log(`[Clerk Webhook] User created`, { 
           userId: newUser.id,
           clerkId: newUser.clerkId 
@@ -136,7 +136,7 @@ export async function POST(req: Request) {
            RETURNING *`,
           [transactionId, id, newUser.id, svixEventId]
         );
-        const transaction = transactionResult.rows[0];
+        const transaction = transactionResult[0];
         console.log(`[Clerk Webhook] Transaction record created`, {
           transactionId: transaction.id,
           amount: transaction.amount,

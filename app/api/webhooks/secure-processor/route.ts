@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
         [transaction_id]
       );
 
-      if (existingTransaction.rows.length > 0) {
+      if (existingTransaction.length > 0) {
         console.log('⚠️  Duplicate webhook detected - transaction already processed:', transaction_id);
         return NextResponse.json({ 
           status: 'ok',
@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
           [tracking_id]
         );
 
-        if (userResult.rows.length === 0) {
+        if (userResult.length === 0) {
           console.error('❌ User not found:', tracking_id);
           console.error('⚠️  Payment received for non-existent user. User must be created via Clerk webhook first.');
           return NextResponse.json(
@@ -207,7 +207,7 @@ export async function POST(request: NextRequest) {
           );
         }
 
-        const user = userResult.rows[0];
+        const user = userResult[0];
         console.log('✅ User found:', user.email);
         console.log('Current balance:', user.availableGenerations);
         console.log('Used generations:', user.usedGenerations);
@@ -455,8 +455,8 @@ export async function POST(request: NextRequest) {
                 [tracking_id]
               );
 
-              if (userResult.rows.length > 0) {
-                const currentBalance = userResult.rows[0].availableGenerations;
+              if (userResult.length > 0) {
+                const currentBalance = userResult[0].availableGenerations;
                 const newBalance = Math.max(0, currentBalance - tokensToRefund);
                 
                 await client.query(

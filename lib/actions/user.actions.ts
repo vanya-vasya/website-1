@@ -28,20 +28,20 @@ export async function createOrGetUser(clerkUser: {
     console.log('[CREATE_OR_GET_USER] Starting for clerkId:', clerkUser.clerkId);
     
     // Try to find existing user
-    const existingResult = await db.query<User>(
+    const existingUsers = await db.query<User>(
       'SELECT * FROM "User" WHERE "clerkId" = $1',
       [clerkUser.clerkId]
     );
 
-    if (existingResult.rows.length > 0) {
-      console.log('[CREATE_OR_GET_USER] User exists:', existingResult.rows[0].id);
-      return existingResult.rows[0];
+    if (existingUsers.rows.length > 0) {
+      console.log('[CREATE_OR_GET_USER] User exists:', existingUsers.rows[0].id);
+      return existingUsers.rows[0];
     }
 
     // User doesn't exist, create new
     console.log('[CREATE_OR_GET_USER] Creating new user');
     const userId = db.generateId();
-    const result = await db.query<User>(
+    const newUsers = await db.query<User>(
       `INSERT INTO "User" 
         ("id", "clerkId", "email", "firstName", "lastName", "photo", "availableGenerations", "usedGenerations") 
        VALUES ($1, $2, $3, $4, $5, $6, 20, 0) 
@@ -56,8 +56,8 @@ export async function createOrGetUser(clerkUser: {
       ]
     );
 
-    console.log('[CREATE_OR_GET_USER] Created user:', result.rows[0].id);
-    return result.rows[0];
+    console.log('[CREATE_OR_GET_USER] Created user:', newUsers.rows[0].id);
+    return newUsers.rows[0];
     
   } catch (error) {
     console.error('[CREATE_OR_GET_USER] Error:', error);
