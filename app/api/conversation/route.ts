@@ -8,11 +8,49 @@ import { MODEL_GENERATIONS_PRICE } from "@/constants";
 
 export const maxDuration = 300;
 
+// Retry helper with exponential backoff
+async function retryWithBackoff<T>(
+  fn: () => Promise<T>,
+  maxRetries = 3,
+  baseDelay = 1000
+): Promise<T> {
+  let lastError: Error | undefined;
+
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error: any) {
+      lastError = error;
+
+      // Don't retry on client errors (4xx)
+      if (error?.status && error.status < 500) {
+        throw error;
+      }
+
+      // Don't retry on last attempt
+      if (attempt === maxRetries - 1) {
+        break;
+      }
+
+      // Exponential backoff: 1s, 2s, 4s
+      const delay = baseDelay * Math.pow(2, attempt);
+      console.log(
+        `[CONVERSATION] Retry attempt ${attempt + 1}/${maxRetries} after ${delay}ms`
+      );
+      await new Promise((resolve) => setTimeout(resolve, delay));
+    }
+  }
+
+  throw lastError;
+}
+
 export async function POST(req: Request) {
   try {
     // Lazy initialization of OpenAI client
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
+      maxRetries: 0, // We handle retries manually
+      timeout: 60000, // 60 second timeout
     });
     const { userId } = auth();
     console.log("[CONVERSATION] User ID:", userId);
@@ -32,9 +70,11 @@ export async function POST(req: Request) {
       });
     }
 
-    if (!messages) {
-      console.error("[CONVERSATION] No messages provided");
-      return new NextResponse("Messages are required", { status: 400 });
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      console.error("[CONVERSATION] Invalid messages provided");
+      return new NextResponse("Valid messages array is required", {
+        status: 400,
+      });
     }
 
     console.log("[CONVERSATION] Checking API limit for user:", userId);
@@ -52,10 +92,19 @@ export async function POST(req: Request) {
     }
 
     console.log("[CONVERSATION] Calling OpenAI API");
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages,
-    });
+
+    // Use retry logic for OpenAI API call
+    const response = await retryWithBackoff(
+      async () => {
+        return await openai.chat.completions.create({
+          model: "gpt-3.5-turbo",
+          messages,
+        });
+      },
+      3,
+      1000
+    );
+
     console.log("[CONVERSATION] OpenAI API response received");
 
     console.log("[CONVERSATION] Incrementing API limit");
@@ -63,13 +112,46 @@ export async function POST(req: Request) {
     console.log("[CONVERSATION] API limit incremented successfully");
 
     return NextResponse.json(response.choices[0].message);
-  } catch (error) {
+  } catch (error: any) {
     console.error("[CONVERSATION_ERROR]", error);
-    // Log more details about the error
+
+    // Log detailed error information
+    if (error?.status) {
+      console.error("[CONVERSATION_ERROR] Status:", error.status);
+      console.error("[CONVERSATION_ERROR] Request ID:", error.request_id);
+    }
+
     if (error instanceof Error) {
       console.error("[CONVERSATION_ERROR] Message:", error.message);
       console.error("[CONVERSATION_ERROR] Stack:", error.stack);
     }
-    return new NextResponse("Internal Error", { status: 500 });
+
+    // Handle specific OpenAI errors
+    if (error?.status === 400) {
+      return new NextResponse(
+        error?.error?.message || "Invalid request to OpenAI",
+        { status: 400 }
+      );
+    }
+
+    if (error?.status === 429) {
+      return new NextResponse(
+        "Rate limit exceeded. Please try again in a moment.",
+        { status: 429 }
+      );
+    }
+
+    if (error?.status === 500 || error?.status === 503) {
+      return new NextResponse(
+        "OpenAI service is temporarily unavailable. Please try again in a moment.",
+        { status: 503 }
+      );
+    }
+
+    // Generic error
+    return new NextResponse(
+      "Failed to process conversation. Please try again.",
+      { status: 500 }
+    );
   }
 }
