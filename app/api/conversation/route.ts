@@ -8,7 +8,8 @@ import { MODEL_GENERATIONS_PRICE } from "@/constants";
 
 export const maxDuration = 300;
 
-// Retry helper with exponential backoff
+// Retry helper with exponential backoff (5 attempts with jitter)
+// Force cache invalidation - updated 2025-11-05
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
   maxRetries = 5,
