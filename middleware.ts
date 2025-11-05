@@ -8,7 +8,18 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) auth().protect();
+  // Log auth attempts for debugging (remove in production if not needed)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('[Clerk Middleware]', {
+      path: req.nextUrl.pathname,
+      isProtected: isProtectedRoute(req),
+      url: req.url,
+    });
+  }
+
+  if (isProtectedRoute(req)) {
+    auth().protect();
+  }
 });
 
 export const config = {

@@ -5,12 +5,11 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 
-import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
+import { deleteUser, updateUser } from "@/lib/actions/user.actions";
+import db from "@/lib/db";
 
 export async function POST(req: Request) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
-
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
@@ -38,7 +37,6 @@ export async function POST(req: Request) {
   // Create a new Svix instance with your secret.
   const wh = new Webhook(WEBHOOK_SECRET!);
   
-
   let evt: WebhookEvent;
 
   // Verify the payload with the headers
@@ -59,31 +57,131 @@ export async function POST(req: Request) {
   const { id } = evt.data;
   const eventType = evt.type;
   
-
   // CREATE
   if (eventType === "user.created") {
     const { id, email_addresses, image_url, first_name, last_name } = evt.data;
+    const svixEventId = evt.data.id || svix_id;
 
-    const user = {
-      clerkId: id,
-      email: email_addresses[0].email_address,
-      firstName: first_name,
-      lastName: last_name,
-      photo: image_url,
-    };
+    try {
+      // Get email address safely
+      const userEmail = email_addresses?.[0]?.email_address || null;
+      
+      if (!userEmail) {
+        console.error(`[Clerk Webhook] No email address found for user ${id}`);
+        return NextResponse.json(
+          { 
+            message: "Error creating user", 
+            error: "No email address found in webhook data" 
+          },
+          { status: 400 }
+        );
+      }
 
-    const newUser = await createUser(user);
+      // Check for idempotency - see if this webhook event was already processed
+      const existingEventResult = await db.query(
+        'SELECT * FROM "WebhookEvent" WHERE "eventId" = $1',
+        [svixEventId]
+      );
 
-    // Set public metadata
-    if (newUser) {
+      if (existingEventResult.length > 0 && existingEventResult[0].processed) {
+        console.log(`Webhook event ${svixEventId} already processed, skipping...`);
+        const existingUserResult = await db.query(
+          'SELECT * FROM "User" WHERE "clerkId" = $1',
+          [id]
+        );
+        return NextResponse.json({ 
+          message: "Already processed", 
+          user: existingUserResult[0],
+          idempotent: true 
+        });
+      }
+
+      // Use database transaction to ensure atomicity
+      console.log(`[Clerk Webhook] Starting transaction for user creation`, {
+        clerkId: id,
+        email: userEmail,
+      });
+
+      const result = await db.transaction(async (client) => {
+        // Create webhook event record for idempotency
+        const webhookEventId = db.generateId();
+        await client.query(
+          `INSERT INTO "WebhookEvent" ("id", "eventId", "eventType", "processed") 
+           VALUES ($1, $2, $3, false)`,
+          [webhookEventId, svixEventId, "user.created"]
+        );
+        console.log(`[Clerk Webhook] Webhook event created`);
+
+        // Create user with initial 20 credits
+        const userId = db.generateId();
+        const userResult = await client.query(
+          `INSERT INTO "User" 
+            ("id", "clerkId", "email", "firstName", "lastName", "photo", "availableGenerations") 
+           VALUES ($1, $2, $3, $4, $5, $6, 20) 
+           RETURNING *`,
+          [userId, id, userEmail, first_name, last_name, image_url]
+        );
+        const newUser = userResult[0];
+        console.log(`[Clerk Webhook] User created`, { 
+          userId: newUser.id,
+          clerkId: newUser.clerkId 
+        });
+
+        // Create transaction record for signup bonus
+        const transactionId = db.generateId();
+        const transactionResult = await client.query(
+          `INSERT INTO "Transaction" 
+            ("id", "tracking_id", "userId", "amount", "type", "reason", "status", "webhookEventId", "paid_at") 
+           VALUES ($1, $2, $3, 20, 'credit', 'signup bonus', 'completed', $4, NOW()) 
+           RETURNING *`,
+          [transactionId, id, newUser.id, svixEventId]
+        );
+        const transaction = transactionResult[0];
+        console.log(`[Clerk Webhook] Transaction record created`, {
+          transactionId: transaction.id,
+          amount: transaction.amount,
+        });
+
+        // Mark webhook event as processed
+        await client.query(
+          'UPDATE "WebhookEvent" SET "processed" = true, "processedAt" = NOW() WHERE "eventId" = $1',
+          [svixEventId]
+        );
+        console.log(`[Clerk Webhook] Webhook event marked as processed`);
+
+        return { user: newUser, transaction };
+      });
+
+      console.log(`[Clerk Webhook] Transaction completed successfully`);
+
+      // Set public metadata in Clerk
       await clerkClient.users.updateUserMetadata(id, {
         publicMetadata: {
-          userId: newUser.id,
+          userId: result.user.id,
         },
       });
-    }
 
-    return NextResponse.json({ message: "OK", user: newUser });
+      console.log(`Successfully created user ${id} with 20 signup credits`);
+      
+      return NextResponse.json({ 
+        message: "OK", 
+        user: result.user,
+        transaction: result.transaction 
+      });
+
+    } catch (error) {
+      console.error("Error creating user:", error);
+      
+      // If transaction failed, webhook event won't be marked as processed
+      // allowing for retry on next webhook delivery
+      return NextResponse.json(
+        { 
+          message: "Error creating user", 
+          error: error instanceof Error ? error.message : "Unknown error" 
+        },
+        { status: 500 }
+      );
+    }
   }
 
   // UPDATE
@@ -117,7 +215,5 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  // const user = { clerkId: "111", email:"text2@cfas.com", photo:"https://fsdfdsafasd.com2", firstName:"maris2", lastName:'rabisko2', username: 'test2'}
-  // const newUser = await createUser(user);
   return NextResponse.json({ message: "OK" });
 }

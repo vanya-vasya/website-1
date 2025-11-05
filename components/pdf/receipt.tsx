@@ -140,7 +140,7 @@ const company = {
   address: "Dept 6162 43 Owston Road, Carcroft, Doncaster, United Kingdom, DN6 8DA",
   website: "zinvero.com",
   email: "support@zinvero.com",
-  logo: "./public/logos/zinvero-logo.png", // Official company logo
+  logo: "./public/logos/zinvero-logo.png", // Official logo
   companyNumber: "15982295",
 };
 

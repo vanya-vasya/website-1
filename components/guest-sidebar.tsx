@@ -28,7 +28,7 @@ const routes = [
     label: 'Image Generation',
     icon: ImageIcon,
     color: "text-pink-700",
-    href: '/dashboard/image',
+    href: '/dashboard/image-generation',
   },
   {
     label: 'Video Generation',
@@ -40,7 +40,7 @@ const routes = [
     label: 'Music Generation',
     icon: Music,
     color: "text-emerald-500",
-    href: '/dashboardmusic',
+    href: '/dashboard/music',
   },
   {
     label: 'Code Generation',
@@ -71,10 +71,10 @@ export const Sidebar = ({
     <div className="px-3 py-2 flex-1">
       <Link href="/dashboard" className="flex items-center pl-3 mb-14">
         <div className="relative h-8 w-8 mr-4">
-          <Image fill alt="zinvero Logo" src="/logos/zinvero-logo.png" />
+          <Image fill alt="Zinvero Logo" src="/logos/zinvero-logo.png" />
         </div>
         <h1 className={cn("text-2xl font-bold", poppins.className)}>
-          Thinker
+          Zinvero
         </h1>
       </Link>
       <div className="space-y-1">

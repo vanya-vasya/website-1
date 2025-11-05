@@ -28,7 +28,7 @@ import { z } from "zod";
 import { useAuth, useUser } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { NetworkPaymentWidget } from "@/components/networx-payment-widget";
+import { NetworkPaymentWidget } from "@/components/secure-processor-payment-widget";
 import {
   Checkbox,
   Field,
@@ -200,6 +200,7 @@ export const ProModal = () => {
               orderId={`gen_${userId}_${Date.now()}`}
               description={`Zinvero Generations Purchase (${watch("generations")} Tokens)`}
               customerEmail={user?.emailAddresses[0].emailAddress || ""}
+              userId={userId || ""}
               onSuccess={handlePaymentSuccess}
               onError={handlePaymentError}
               onCancel={handlePaymentCancel}

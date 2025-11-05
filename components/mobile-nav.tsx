@@ -101,7 +101,7 @@ export function MobileNav({
             <div className="flex justify-between items-center">
               <Image
                 src="/logos/zinvero-logo.png"
-                alt="zinvero Logo"
+                alt="Zinvero Logo"
                 width={150}
                 height={50}
               />
@@ -307,7 +307,7 @@ export function MobileNav({
               </CollapsibleContent>
             </Collapsible>
             <Link
-              href={"https://nerbixa.com/dashboard/billing/payment-history"}
+              href={"https://www.zinvero.com/dashboard/billing/payment-history"}
               onClick={() => setIsOpen(false)}
               className={cn(
                 "flex w-full items-center p-4 font-medium text-black hover:bg-gray-50 transition-colors",

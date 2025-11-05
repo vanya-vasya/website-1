@@ -18,12 +18,52 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "zinvero",
+  metadataBase: new URL("https://www.zinvero.com"),
+  title: "Zinvero",
   description: "AI-powered creative tools for everyone",
+  manifest: "/site.webmanifest",
   icons: {
-    icon: "/logos/zinvero-logo.png",
-    shortcut: "/logos/zinvero-logo.png",
-    apple: "/logos/zinvero-logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/logos/zinvero-icon.png",
+      },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Zinvero",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.zinvero.com",
+    siteName: "Zinvero",
+    title: "Zinvero - AI-powered creative tools",
+    description: "AI-powered creative tools for everyone",
+    images: [
+      {
+        url: "/logos/zinvero-icon.png",
+        width: 512,
+        height: 512,
+        alt: "Zinvero",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Zinvero - AI-powered creative tools",
+    description: "AI-powered creative tools for everyone",
+    images: ["/logos/zinvero-icon.png"],
   },
 };
 
@@ -33,7 +73,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+      afterSignInUrl="/dashboard"
+      afterSignUpUrl="/dashboard"
+    >
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
@@ -45,7 +91,7 @@ export default function RootLayout({
           <GoogleAnalytics gaId="G-DYY23NK5V1" />
           <ModalProvider />
           <ToasterProvider />
-          <NextTopLoader color="#3c3c77" showSpinner={false} />
+          <NextTopLoader color="#00b8d4" showSpinner={false} />
           {children}
         </body>
       </html>
