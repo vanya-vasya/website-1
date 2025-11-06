@@ -11,13 +11,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Loader } from "@/components/loader";
 import { Empty } from "@/components/ui/empty";
 import { useProModal } from "@/hooks/use-pro-modal";
@@ -25,7 +18,7 @@ import { FeatureContainer } from "@/components/feature-container";
 import { inputStyles, buttonStyles, contentStyles, loadingStyles } from "@/components/ui/feature-styles";
 import { cn } from "@/lib/utils";
 
-import { duration, formSchema } from "./constants";
+import { formSchema } from "./constants";
 import { MODEL_GENERATIONS_PRICE } from "@/constants";
 
 // Конфигурация для разных типов инструментов
@@ -70,13 +63,12 @@ const SpeechPage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       prompt: "",
-      duration: "5",
     }
   });
 
   // Обновляем placeholder при изменении toolId
   useEffect(() => {
-    form.reset({ prompt: "", duration: "5" });
+    form.reset({ prompt: "" });
   }, [toolId, form]);
 
   const isLoading = form.formState.isSubmitting;
@@ -119,7 +111,7 @@ const SpeechPage = () => {
             <FormField
               name="prompt"
               render={({ field }) => (
-                <FormItem className="col-span-12 lg:col-span-7">
+                <FormItem className="col-span-12 lg:col-span-10">
                   <FormControl className="m-0 p-0">
                     <Input
                       className={inputStyles.base}
@@ -128,33 +120,6 @@ const SpeechPage = () => {
                       {...field}
                     />
                   </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="duration"
-              render={({ field }) => (
-                <FormItem className="col-span-12 lg:col-span-3">
-                  <Select
-                    disabled={isLoading}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue defaultValue={field.value} />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {duration.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
                 </FormItem>
               )}
             />
