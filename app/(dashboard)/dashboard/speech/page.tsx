@@ -32,7 +32,7 @@ import { MODEL_GENERATIONS_PRICE } from "@/constants";
 const toolConfigs = {
   'speech-generation': {
     title: 'Speech Generation',
-    description: `Turn your prompt into speech. Generation can take from 1 to 5 minutes\nPrice: ${MODEL_GENERATIONS_PRICE.speecGeneration} credits`,
+    description: `Turn your prompt into speech. Powered by OpenAI TTS\nPrice: ${MODEL_GENERATIONS_PRICE.speecGeneration} credits`,
     iconName: 'Mic',
     iconColor: 'text-fuchsia-600',
     bgColor: 'bg-fuchsia-600/10',
@@ -84,7 +84,9 @@ const SpeechPage = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const response = await axios.post('/api/speech', values);
-      setSpeechList((prev) => [...prev, response.data]);
+      // OpenAI TTS returns { audio: "data:audio/mpeg;base64,..." }
+      const audioUrl = response.data.audio || response.data;
+      setSpeechList((prev) => [...prev, audioUrl]);
       form.reset();
     } catch (error: any) {
       if (error?.response?.status === 403) {
