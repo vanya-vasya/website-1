@@ -42,7 +42,7 @@ const testimonials = [
     role: "Independent Filmmaker",
     image: "/images/testimonials/testimonials-5.png",
     content:
-      "AI Voiceover has been a game-changer for my indie films. I can create professional-quality narration that perfectly matches the tone of each scene",
+      "Video Maker has been a game-changer for my indie films. I can create engaging video content that perfectly matches the tone of each scene",
     color: "from-indigo-600 to-blue-500",
   },
   {
